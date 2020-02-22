@@ -1,0 +1,14 @@
+<!--components/index.wxml-->
+<view class="container">
+  <view class="swiper">
+    <swiper
+      indicator-dots="{{true}}" autoplay="{{true}}" circular="{{true}}" vertical="{{false}}"
+      interval="{{2000}}" duration="{{500}}" previous-margin="0px" next-margin="0px">
+      <block wx:for="{{backgrounds}}" wx:key="*this">
+        <swiper-item>
+          <image src="{{item}}" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</view>

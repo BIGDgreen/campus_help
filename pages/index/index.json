@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "bm-swiper": "/components/swiper/index"
+  }
+}

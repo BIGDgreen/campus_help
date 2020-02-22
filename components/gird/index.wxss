@@ -1,0 +1,1 @@
+.container{display:flex;flex-direction:column;justify-content:center}.container image{width:60rpx;height:60rpx;border-radius:50%;overflow:hidden}.container text{color:#666666;font-size:16rpx}

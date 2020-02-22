@@ -1,0 +1,6 @@
+<!--components/gird/index.wxml-->
+<view class="container">
+  <view class="iconfont icon-class">
+  </view>
+  <text>{{icon.text}}</text>
+</view>

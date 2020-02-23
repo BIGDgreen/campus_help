@@ -1,0 +1,4 @@
+/* pages/category_detail/category_detail.wxss */
+.tag {
+  margin-right: 14rpx;
+}

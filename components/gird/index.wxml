@@ -1,6 +1,5 @@
 <!--components/gird/index.wxml-->
-<view class="container">
-  <view class="iconfont icon-class">
-  </view>
+<view class="container" bind:tap="onTap">
+  <image src="{{icon.icon}}" class="icon" />
   <text>{{icon.text}}</text>
 </view>

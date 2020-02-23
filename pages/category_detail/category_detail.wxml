@@ -1,0 +1,12 @@
+<!--pages/category_detail/category_detail.wxml-->
+<view class="container">
+  <block wx:for="{{categoryList}}" wx:key="id">
+    <bm-panel imageSrc="{{item.imageSrc}}" title="{{item.title}}" updateTime="{{item.updateTime}}">
+      <view slot="tags">
+        <block wx:for="{{item.tags}}" wx:key="*this">
+          <bm-tag class="tag" tagContent="{{item}}"></bm-tag>
+        </block>
+      </view>
+    </bm-panel>
+  </block>
+</view>

@@ -1,0 +1,4 @@
+<!--pages/hot-detail/hot_detail.wxml-->
+<view class="container">
+  商品详情
+</view>

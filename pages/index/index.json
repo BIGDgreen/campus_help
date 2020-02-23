@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "bm-swiper": "/components/swiper/index"
+    "bm-swiper": "/components/swiper/index",
+    "bm-grid": "/components/gird/index",
+    "bm-panel": "/components/panel/index"
   }
 }

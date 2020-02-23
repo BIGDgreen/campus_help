@@ -1,0 +1,53 @@
+.container {
+  background: #f4f4f4;
+  height: 100vh;
+  .userInfo-wrapper {
+    background: white;
+    display: flex;
+    flex-direction: row;
+    .avatar-wrapper {
+      margin-left: 10%;
+      .avatar {
+        width: 140rpx;
+        height: 140rpx;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+    }
+    .infoText-wrapper {
+      display: flex;
+      flex-direction: column;
+      margin-left: 40rpx;
+      .info {
+        margin-bottom: 8rpx;
+      }
+    }
+    .noLogin {
+      margin-top: 40rpx;
+      margin-left: 40rpx;
+      .info {
+        color: #a3a3a3;
+      }
+    }
+  }
+  .weui-panel__hd {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    font-weight: 500;
+    .exchange {
+      width: 50rpx;
+      height: 50rpx;
+    }
+    &:after {
+      left: 0;
+    }
+  }
+  .weui-cells {
+    font-size: 1rem;
+    color: #333;
+  }
+  .cell-class {
+    padding: 20rpx 35rpx;
+  }
+}

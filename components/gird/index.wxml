@@ -1,5 +1,5 @@
 <!--components/gird/index.wxml-->
-<view class="container" bind:tap="onTap">
+<view class="com-container" bind:tap="onTap">
   <image src="{{icon.icon}}" class="icon" />
   <text>{{icon.text}}</text>
 </view>

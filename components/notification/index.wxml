@@ -1,0 +1,17 @@
+<!--components/notification/index.wxml-->
+<view class="com-container">
+  <view class="page__bd">
+    <mp-cells>
+      <mp-cell>
+        <view slot="title" style="position: relative;margin-right: 10px;">
+            <image src="{{avatar}}" style="width: 50px; height: 50px; display: block"/>
+            <view wx:if="{{unreadNum > 0}}">
+              <mp-badge content="{{unreadNum}}" style="position: absolute;top: -.4em;right: -.4em;"/>
+            </view>
+        </view>
+        <view>{{name}}</view>
+        <view style="font-size: 13px;color: #888888;">{{latestNote}}</view>
+      </mp-cell>
+    </mp-cells>
+  </view>
+</view>

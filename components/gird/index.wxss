@@ -1,1 +1,1 @@
-.container{display:inline-flex;flex-direction:column;align-items:center}.container .icon{width:68rpx;height:68rpx}.container text{color:#666666;font-size:26rpx}
+.com-container{display:inline-flex;flex-direction:column;align-items:center}.com-container .icon{width:68rpx;height:68rpx}.com-container text{color:#666666;font-size:26rpx}

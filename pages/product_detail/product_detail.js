@@ -1,18 +1,24 @@
 // pages/hot-detail/hot_detail.js
+import ProductModel from '../../models/productModel'
+const productModel = new ProductModel();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    productDetail: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const productDetail = productModel.getProductDetail();
+    this.setData({
+      productDetail
+    })
   },
 
   /**

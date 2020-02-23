@@ -4,7 +4,8 @@
     "pages/recycle/recycle",
     "pages/my/my",
     "pages/product_detail/product_detail",
-    "pages/category_detail/category_detail"
+    "pages/category_detail/category_detail",
+    "pages/news/news"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -22,6 +23,12 @@
         "text": "首页",
         "iconPath": "/images/home/home@default.png",
         "selectedIconPath": "/images/home/home@active.png"
+      },
+      {
+        "pagePath": "pages/news/news",
+        "text": "消息",
+        "iconPath": "/images/news/news@default.png",
+        "selectedIconPath": "/images/news/news@active.png"
       },
       {
         "pagePath": "pages/my/my",

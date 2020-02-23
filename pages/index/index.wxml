@@ -1,13 +1,16 @@
 <!--index.wxml-->
 <view class="container">
-  <bm-swiper />
+  <bm-swiper backgrounds="{{backgrounds}}"/>
   <view class="icon-wrapper">
     <block wx:for="{{icons}}" wx:key="icon">
       <bm-grid icon="{{item}}" bind:tapGrid="tapGrid"></bm-grid>
     </block>
   </view>
   <view class="weui-panel weui-panel_access hot-wrapper">
-    <view class="weui-panel__hd">热门闲置</view>
+    <view class="weui-panel__hd">
+      <image class="fire" src="/images/home/hot.png"/>
+      <text>热门闲置</text>
+    </view>
       <block wx:for="{{hotLists}}" wx:key="title">
         <view class="weui-panel__bd">
           <bm-panel imageSrc="{{item.imageSrc}}" title="{{item.title}}" updateTime="{{item.updateTime}}"/>

@@ -1,4 +1,20 @@
 <!--pages/hot-detail/hot_detail.wxml-->
 <view class="container">
-  商品详情
+  <bm-swiper image-class="image-style" swiper-class="swiper-style" autoplay="{{false}}" backgrounds="{{productDetail.images}}"></bm-swiper>
+  <view class="detail-wrapper">
+    <view class="header">
+      <text class="title">{{productDetail.title}}</text>
+      <text class="updateTime">{{productDetail.updateTime}}</text>
+      <view>
+        <block wx:for="{{productDetail.tags}}">
+          <bm-tag tagContent="{{item}}" class="tag"></bm-tag>
+        </block>
+      </view>
+    </view>
+    <view class="detail-title">-- 详情 --</view>
+    <text class="content">{{productDetail.content}}</text>
+  </view>
+  <view class="footer">
+    <button type="warn" size="default" plain="{{false}}" bindtap="default" hover-class="other-button-hover">马上咨询</button>
+  </view>
 </view>

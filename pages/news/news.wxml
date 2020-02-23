@@ -1,0 +1,10 @@
+<!--pages/news/news.wxml-->
+<view class="container">
+  <block wx:for="{{notifications}}">
+    <bm-notification avatar="{{item.avatar}}"
+                     unreadNum="{{item.unreadNum}}"
+                     name="{{item.name}}"
+                     latestNote="{{item.latestNote}}">
+    </bm-notification>
+  </block>
+</view>

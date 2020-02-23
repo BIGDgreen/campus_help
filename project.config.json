@@ -65,6 +65,27 @@
 					"pathName": "pages/category_detail/category_detail",
 					"query": "iconText=床上用品",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "product_detail",
+					"pathName": "pages/product_detail/product_detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "news",
+					"pathName": "pages/news/news",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "my",
+					"pathName": "pages/my/my",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

@@ -1,4 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "bm-swiper": "/components/swiper/index",
+    "bm-tag": "/components/tag/index"
+  },
   "navigationBarTitleText": "商品详情"
 }

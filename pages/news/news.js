@@ -1,23 +1,22 @@
-// pages/category_detail/category_detail.js
-import ProductModel from '../../models/productModel'
-const productModel = new ProductModel();
+// pages/news/news.js
+import NotificationModel from '../../models/notificationModel'
+const notificationModel = new NotificationModel();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    categoryList: [],
+    notifications: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("category_detail:::", options.iconText); // 当前分类
-    const categoryList = productModel.getCategoryList();
+    const notifications = notificationModel.getNotifications();
     this.setData({
-      categoryList
+      notifications
     })
   },
 

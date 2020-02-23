@@ -5,62 +5,50 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    authorized: false,
+    userInfo: null,
+    studentNum: 12343412,
+    introduce: '神仙本仙'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this._userAuthorized();
+  },
+  
+  getUserinfo(event) {
+    console.log("getUserInfo:::", event.detail.userInfo);
+    const userInfo = event.detail.userInfo;
+    if(userInfo) {
+      this.setData({
+        authorized: true,
+        userInfo
+      });
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
+   /**
+   *若用户已经授权，直接获取用户信息
+   *
    */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  _userAuthorized() {
+    wx.getSetting({
+      success: (result)=>{
+        // console.log("getSetting:::", result);
+        if(result.authSetting['scope.userInfo']) {
+          wx.getUserInfo({
+            success: (result)=>{
+              // console.log("userInfo:::", result.userInfo);
+              this.setData({
+                authorized: true,
+                userInfo: result.userInfo
+              });
+            }
+          });
+        }
+      },
+    });
   }
 })

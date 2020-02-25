@@ -35,7 +35,7 @@ class ProductModel extends HTTP {
       {
         id: 1,
         imageSrc: 'http://qz.faisys.com/image/wxImage/default_ablum.jpg',
-        title: '标题1',
+        title: '床上三件套',
         updateTime: '2019-12-12',
         tags: ['全新','卡通图案']
       },

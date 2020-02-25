@@ -1,5 +1,5 @@
-const common = {
+const CommonData = {
   url: ''
 }
 
-export {common}
+export default CommonData

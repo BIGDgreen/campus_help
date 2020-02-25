@@ -1,0 +1,38 @@
+@mainColor: #de443a;
+.container {
+  .weui-label {
+    width: 4rem;
+  }
+  .weui-cells {
+    font-size: 1rem;
+  }
+  .weui-cells__title {
+    color: black;
+    font-size: 1rem;
+  }
+  .weui-btn {
+    background: @mainColor;
+    font-weight: 500;
+  }
+  .tag-wrapper {
+    margin-left: 1rem;
+  }
+  .tag_default {
+    font-size: .8rem !important;
+    border-radius: .4rem !important;
+    padding: .2rem .6rem !important;
+    margin-right: .6rem;
+    margin-bottom: .4rem;
+  }
+  .tag_selected {
+    .tag_default;
+    background-color: fade(@mainColor, 80%) !important;
+    color: white !important;
+  }
+  .cancel {
+    width: 36rpx;
+    height: 36rpx;
+    margin-left: .4rem;
+    margin-top: .4rem;
+  }
+}

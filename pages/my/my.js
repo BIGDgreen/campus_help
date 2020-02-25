@@ -18,8 +18,13 @@ Page({
     this._userAuthorized();
   },
   
+  /**
+   *获取用户信息
+   *
+   * @param {*} event
+   */
   getUserinfo(event) {
-    console.log("getUserInfo:::", event.detail.userInfo);
+    // console.log("getUserInfo:::", event.detail.userInfo);
     const userInfo = event.detail.userInfo;
     if(userInfo) {
       this.setData({
@@ -27,6 +32,19 @@ Page({
         userInfo
       });
     }
+  },
+
+  /**
+   *跳转到与我有关的相应类别列表
+   *
+   * @param {*} event
+   */
+  inquireMy(event) {
+    console.log("inquireMy:::", event);
+    const category = event.currentTarget.dataset.type;
+    wx.navigateTo({
+      url: `/pages/category_detail/category_detail?category=${category}`,
+    });
   },
 
    /**

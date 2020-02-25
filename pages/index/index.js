@@ -25,7 +25,7 @@ Page({
     // console.log("tapGrid:::", event.detail.iconText);
     const iconText = event.detail.iconText;
     wx.navigateTo({
-      url: `/pages/category_detail/category_detail?iconText=${iconText}`,
+      url: `/pages/category_detail/category_detail?category=${iconText}`,
     });
   }
 })

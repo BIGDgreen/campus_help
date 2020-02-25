@@ -17,7 +17,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    selected: false // 是否选中标签
   },
 
   /**
@@ -29,7 +29,8 @@ Component({
      */
     onTap(event) {
       const tagContent = this.properties.tagContent;
-      this.triggerEvent('tapping', { tagContent }, {});
+      const selected = !this.data.selected;
+      this.triggerEvent('tagTap', { tagContent, selected }, {});
     }
   }
 })

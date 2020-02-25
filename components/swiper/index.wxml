@@ -4,7 +4,7 @@
     <swiper
       class="swiper-class"
       indicator-dots="{{true}}" autoplay="{{autoplay}}" circular="{{true}}" vertical="{{false}}"
-      interval="{{2000}}" duration="{{500}}" previous-margin="0px" next-margin="0px">
+      interval="2000" duration="500" previous-margin="0px" next-margin="0px">
       <block wx:for="{{backgrounds}}" wx:key="*this">
         <swiper-item>
           <image class="image-class" src="{{item}}" />

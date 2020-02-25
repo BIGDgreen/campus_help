@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "bm-notification": "/components/notification/index"
-  }
+  },
+  "navigationBarTitleText": "我的消息"
 }

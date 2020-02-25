@@ -1,0 +1,43 @@
+<!--pages/publish/publish.wxml-->
+<view class="container">
+  <view class="page__bd">
+      <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+          <mp-cells>
+            <mp-cell prop="title" title="标题" ext-class="">
+                <input bindinput="formInputChange" data-field="qq" class="weui-input" placeholder="请输入标题"/>
+            </mp-cell>
+            <mp-cell prop="category" title="分类" ext-class="">
+              <view class="weui-cell weui-cell_select">
+                  <view class="weui-cell__bd">
+                      <picker bindchange="bindAccountChange" value="{{accountIndex}}" range="{{accounts}}">
+                          <view>{{accounts[accountIndex]}}</view>
+                      </picker>
+                  </view>
+              </view>  
+            </mp-cell>
+          </mp-cells> 
+      </mp-form>
+      <view class="weui-cells__title">标签</view>
+            <view class="tag-wrapper">
+              <block wx:for="{{tags}}" wx:key="*this">
+                <bm-tag tagContent="{{item}}" bind:tagTap="onTag" data-index="{{index}}" tag-class="{{tagSelected[index]?'tag_selected':'tag_default'}}">
+                  <view slot="after" wx:if="{{tagSelected[index]}}" bind:tap="onCancel" data-index="{{index}}">
+                    <image src="/images/publish/cancel.png" class="cancel"/>
+                  </view>
+                </bm-tag>
+              </block>
+            </view>
+      <view class="weui-cells__title">物品描述</view>
+      <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell">
+              <view class="weui-cell__bd">
+                  <textarea class="weui-textarea" placeholder="请输入您的物品描述：名称、新旧程度、颜色、品牌等" style="height: 3.3em" />
+                  <mp-uploader max-count="5" bindfail="uploadError" bindsuccess="uploadSuccess" select="{{selectFile}}" upload="{{uplaodFile}}" files="{{files}}" title="" tips=""></mp-uploader>
+              </view>
+          </view>
+      </view>
+      <view class="weui-btn-area">
+          <button class="weui-btn" type="primary" bindtap="submitForm">提交</button>
+      </view>
+  </view>
+</view>

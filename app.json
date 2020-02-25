@@ -1,11 +1,11 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/recycle/recycle",
     "pages/my/my",
     "pages/product_detail/product_detail",
     "pages/category_detail/category_detail",
-    "pages/news/news"
+    "pages/news/news",
+    "pages/publish/publish"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -15,7 +15,7 @@
   },
   "tabBar": {
     "color": "#c7c7c7",
-    "selectedColor": "#000000",
+    "selectedColor": "#DE443A",
     "backgroundColor": "#ffffff",
     "list": [
       {
@@ -23,6 +23,12 @@
         "text": "首页",
         "iconPath": "/images/home/home@default.png",
         "selectedIconPath": "/images/home/home@active.png"
+      },
+      {
+        "pagePath": "pages/publish/publish",
+        "text": "发布",
+        "iconPath": "/images/publish/publish@default.png",
+        "selectedIconPath": "/images/publish/publish@active.png"
       },
       {
         "pagePath": "pages/news/news",

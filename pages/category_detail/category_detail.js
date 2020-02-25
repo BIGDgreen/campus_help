@@ -14,7 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("category_detail:::", options.iconText); // 当前分类
+    console.log("category_detail:::", options); // 当前分类
     const categoryList = productModel.getCategoryList();
     this.setData({
       categoryList

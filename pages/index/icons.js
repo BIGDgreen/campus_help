@@ -28,7 +28,7 @@ const IconData = [
     text: '运动休闲'
   },
   {
-    icon: '/pages/index/images/icons/others.png',
+    icon: '/images/home/icons/others.png',
     text: '其他物品'
   }
 ]

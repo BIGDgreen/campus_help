@@ -1,7 +1,7 @@
 <!--components/panel/index.wxml-->
 <view class="com-container">
   <view class="page__bd">
-    <navigator url="/pages/product_detail/product_detail" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+    <view bind:tap="toDetail" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
       <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
         <image class="weui-media-box__thumb" src="{{imageSrc}}" />
       </view>
@@ -12,6 +12,6 @@
           <view class="weui-media-box__info__meta">{{updateTime}}</view>
         </view>
       </view>
-    </navigator>
+    </view>
   </view>
 </view>

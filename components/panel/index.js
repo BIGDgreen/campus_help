@@ -7,6 +7,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    id: String,
     imageSrc: String,
     title: String,
     updateTime: String
@@ -23,6 +24,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    // 跳转到相应页面
+    toDetail() {
+      const id = this.properties.id;
+      this.triggerEvent('toDetail',{id},{});
+    }
   }
 })

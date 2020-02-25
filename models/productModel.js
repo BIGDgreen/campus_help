@@ -31,9 +31,11 @@ class ProductModel extends HTTP {
    * @memberof ProductModel
    */
   getCategoryList() {
-    let categoryList = [
+    const categoryList = [
       {
         id: 1,
+        type: '床上用品',
+        price: '¥100',
         imageSrc: 'http://qz.faisys.com/image/wxImage/default_ablum.jpg',
         title: '床上三件套',
         updateTime: '2019-12-12',
@@ -41,6 +43,8 @@ class ProductModel extends HTTP {
       },
       {
         id: 2,
+        type: '电子产品',
+        price: '¥200',
         imageSrc: 'http://qz.faisys.com/image/wxImage/default_ablum.jpg',
         title: '标题2',
         updateTime: '2019-12-12',
@@ -57,8 +61,11 @@ class ProductModel extends HTTP {
    * @memberof ProductModel
    */
   getProductDetail() {
-    let productDetail = {
+    const productDetail = {
+      id: 1,
+      price: '¥100',
       title: '床上三件套',
+      type: '床上用品',
       tags: ['全新','女生用','卡通'],
       updateTime: '2020-1-2 14:00',
       images: [

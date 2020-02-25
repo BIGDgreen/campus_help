@@ -41,9 +41,9 @@ Page({
    */
   inquireMy(event) {
     console.log("inquireMy:::", event);
-    const category = event.currentTarget.dataset.type;
+    const type = event.currentTarget.dataset.type;
     wx.navigateTo({
-      url: `/pages/category_detail/category_detail?category=${category}`,
+      url: `/pages/category_detail/category_detail?type=${type}`,
     });
   },
 

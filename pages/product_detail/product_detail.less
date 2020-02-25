@@ -1,3 +1,4 @@
+@mainColor: #de443a;
 .container {
   .swiper-style {
     height: 500rpx;
@@ -14,9 +15,13 @@
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      .title {
+      .price {
         font-weight: bold;
-        font-size: 1.2rem;
+        color: @mainColor;
+        font-size: 1.4rem;
+      }
+      .title {
+        font-size: 1rem;
       }
       .updateTime {
         color: #999999;
@@ -58,17 +63,26 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     box-shadow: 0 10rpx 10rpx #888888;
     button {
-      width: 90%;
-      background: #de443a;
+      width: 82%;
+      background: @mainColor;
       font-size: 34rpx;
       word-spacing: 6rpx;
       color: white;
       font-weight: 500;
       border-radius: 40rpx;
-      margin-top: 30rpx;
-      margin-bottom: 30rpx;
+      margin: 30rpx 20rpx;
+    }
+    .button-disabled {
+      background: fade(@mainColor, 40%);
+    }
+    .button-hover {
+      background: fade(@mainColor, 60%);
+    }
+    .favorBtn {
+      margin-right: 5%;
     }
   }
 }

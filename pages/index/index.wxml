@@ -13,7 +13,7 @@
     </view>
       <block wx:for="{{hotLists}}" wx:key="title">
         <view class="weui-panel__bd">
-          <bm-panel imageSrc="{{item.imageSrc}}" title="{{item.title}}" updateTime="{{item.updateTime}}"/>
+          <bm-panel bind:toDetail="toCategory" imageSrc="{{item.imageSrc}}" title="{{item.title}}" updateTime="{{item.updateTime}}"/>
         </view>
       </block>
   </view>

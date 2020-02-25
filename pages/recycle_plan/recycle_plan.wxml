@@ -1,0 +1,6 @@
+<!--pages/recycle_plan/recycle_plan.wxml-->
+<view class="container">
+  <text class="" selectable="false" space="false" decode="false">
+    商品回收计划指：超过十五天未售出的物品将自动回收
+  </text>
+</view>

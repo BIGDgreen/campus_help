@@ -1,7 +1,9 @@
 {
   "usingComponents": {
     "bm-swiper": "/components/swiper/index",
-    "bm-tag": "/components/tag/index"
+    "bm-tag": "/components/tag/index",
+    "bm-favor": "/components/favor/index",
+    "mp-dialog": "/miniprogram_npm/weui-miniprogram/dialog/dialog"
   },
   "navigationBarTitleText": "商品详情"
 }

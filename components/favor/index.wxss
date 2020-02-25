@@ -1,0 +1,11 @@
+/* components/like/index.wxss */
+.container {
+  padding: 10rpx;
+  display: inline-flex; /*宽度自适应*/
+  flex-direction: row;
+}
+
+.favor-image {
+  width: 50rpx;
+  height: 50rpx;
+}

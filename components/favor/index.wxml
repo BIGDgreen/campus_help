@@ -1,0 +1,4 @@
+<!--components/like/index.wxml-->
+<view class="container" bind:tap="onFavor">
+  <image class="favor-image" src="{{favor ? yesSrc : noSrc}}" />
+</view>

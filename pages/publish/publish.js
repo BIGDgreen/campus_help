@@ -9,9 +9,16 @@ Page({
     accountIndex: 0,
     tagSelected: [false],
     files: [],
-    urlArr: []
+    urlArr: [],
+    checked: false,
+    formData: {
+      title: '无',
+      price: '0',
+      type: '床上用品',
+      tags: [],
+      description: ''
+    }
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -29,10 +36,7 @@ Page({
    */
   onTag(event) {
     console.log("tagIndex:::",event);
-    const index = event.currentTarget.dataset.index;
-    this.setData({
-      ['tagSelected['+index+']']: true
-    })
+    this._tagOption(event, 'click');
   },
 
   /**
@@ -41,12 +45,10 @@ Page({
    * @param {*} event
    */
   onCancel(event) {
-    console.log("cancel:::", event)
-    const index = event.currentTarget.dataset.index;
-    this.setData({
-      ['tagSelected['+index+']']: false
-    })
+    console.log("cancel:::", event);
+    this._tagOption(event, 'cancel');
   },
+
 
   chooseImage: function (e) {
     var that = this;
@@ -131,5 +133,84 @@ Page({
   },
   uploadSuccess(e) {
     console.log('upload success', e.detail)
+  },
+
+  /**
+   *勾选是否同意商品回收计划
+   * @param {*} event
+   */
+  checkboxChange(event) {
+    console.log("checkbox:::", event);
+  },
+  /**
+   *查看商品回收计划
+   *
+   */
+  joinRecycle() {
+    wx.navigateTo({
+      url: '/pages/recycle_plan/recycle_plan'
+    });
+  },
+
+  titleInput(event) {
+    // console.log("input:::", event);
+    this._bindFormItem(event, 'title');
+  },
+  priceInput(event) {
+    this._bindFormItem(event, 'price');
+  },
+  typeInput(event) {
+    const type = this.data.accounts[this.data.accountIndex];
+    this.setData({
+      accountIndex: event.detail.value,
+      ['formData.type']: type
+    });
+  },
+  descriptionInput(event) {
+    // console.log("des:::", event);
+    this._bindFormItem(event, 'description');
+  },
+  /**
+   *提交商品信息表单
+   *
+   * @param {*} event
+   */
+  submitForm(event) {
+    console.log("submitForm:::", event,this.data.formData);
+    wx.showToast({
+      title: '提交成功'
+    });
+  },
+  /**
+   *绑定表单数据
+   *
+   * @param {*} event
+   * @param {String} attr
+   */
+  _bindFormItem(event, attr) {
+    const value = event.detail.value;
+    this.setData({
+      ['formData.'+attr]: value
+    })
+  },
+  /**
+   *与标签相关的操作
+   *
+   * @param {*} event
+   * @param {*} clickOrCancel
+   */
+  _tagOption(event, clickOrCancel) {
+    const index = event.currentTarget.dataset.index;
+    if(clickOrCancel == 'click') {
+      this.setData({
+        ['tagSelected['+index+']']: true
+      });
+      this.data.formData.tags.push(this.data.tags[index]);
+    } else {
+      this.setData({
+        ['tagSelected['+index+']']: false
+      });
+      this.data.formData.tags.splice(index, 1);
+    }
   }
 })

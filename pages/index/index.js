@@ -25,7 +25,15 @@ Page({
     // console.log("tapGrid:::", event.detail.iconText);
     const iconText = event.detail.iconText;
     wx.navigateTo({
-      url: `/pages/category_detail/category_detail?category=${iconText}`,
+      url: `/pages/category_detail/category_detail?type=product&category=${iconText}`,
+    });
+  },
+  /**
+   *跳转到商品详情
+   */
+  toCategory() {
+    wx.navigateTo({
+      url: '/pages/product_detail/product_detail?type=product'
     });
   }
 })

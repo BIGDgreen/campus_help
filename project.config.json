@@ -67,10 +67,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "product_detail",
 					"pathName": "pages/product_detail/product_detail",
-					"query": "",
+					"query": "type=publish",
 					"scene": null
 				},
 				{
@@ -91,6 +91,7 @@
 					"id": -1,
 					"name": "publish",
 					"pathName": "pages/publish/publish",
+					"query": "",
 					"scene": null
 				}
 			]

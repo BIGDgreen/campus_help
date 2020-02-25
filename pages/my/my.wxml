@@ -27,7 +27,7 @@
         <mp-cell link hover value="我卖出的" ext-class="cell-class" data-type="sell" bind:tap="inquireMy"></mp-cell>
       </mp-cells>
       <mp-cells>
-      <mp-cell hover value="我的收藏" data-type="favor" bind:tap="inquireMy">
+      <mp-cell hover value="我的收藏" data-type="product" bind:tap="inquireMy">
         <image slot="icon" src="/images/my/favor.png" style="margin-right: 10rpx;vertical-align: middle;width:20px; height: 20px;"></image>
       </mp-cell>
       <mp-cell hover value="我的回收" data-type="recycle" bind:tap="inquireMy">

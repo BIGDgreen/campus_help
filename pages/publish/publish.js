@@ -48,8 +48,44 @@ Page({
     console.log("cancel:::", event);
     this._tagOption(event, 'cancel');
   },
+  /**
+   *勾选是否同意商品回收计划
+   * @param {*} event
+   */
+  checkboxChange(event) {
+    console.log("checkbox:::", event);
+  },
+  /**
+   *查看商品回收计划
+   *
+   */
+  joinRecycle() {
+    wx.navigateTo({
+      url: '/pages/recycle_plan/recycle_plan'
+    });
+  },
+  titleInput(event) {
+    // console.log("input:::", event);
+    this._bindFormItem(event, 'title');
+  },
+  priceInput(event) {
+    this._bindFormItem(event, 'price');
+  },
+  typeInput(event) {
+    const type = this.data.accounts[this.data.accountIndex];
+    this.setData({
+      accountIndex: event.detail.value,
+      ['formData.type']: type
+    });
+  },
+  descriptionInput(event) {
+    // console.log("des:::", event);
+    this._bindFormItem(event, 'description');
+  },
 
-
+  /**
+   * 图片上传相关操作
+   */
   chooseImage: function (e) {
     var that = this;
     wx.chooseImage({
@@ -134,42 +170,7 @@ Page({
   uploadSuccess(e) {
     console.log('upload success', e.detail)
   },
-
-  /**
-   *勾选是否同意商品回收计划
-   * @param {*} event
-   */
-  checkboxChange(event) {
-    console.log("checkbox:::", event);
-  },
-  /**
-   *查看商品回收计划
-   *
-   */
-  joinRecycle() {
-    wx.navigateTo({
-      url: '/pages/recycle_plan/recycle_plan'
-    });
-  },
-
-  titleInput(event) {
-    // console.log("input:::", event);
-    this._bindFormItem(event, 'title');
-  },
-  priceInput(event) {
-    this._bindFormItem(event, 'price');
-  },
-  typeInput(event) {
-    const type = this.data.accounts[this.data.accountIndex];
-    this.setData({
-      accountIndex: event.detail.value,
-      ['formData.type']: type
-    });
-  },
-  descriptionInput(event) {
-    // console.log("des:::", event);
-    this._bindFormItem(event, 'description');
-  },
+  
   /**
    *提交商品信息表单
    *

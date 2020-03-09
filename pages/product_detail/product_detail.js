@@ -17,7 +17,8 @@ Page({
     dialogContent: null,
     btnType: '',
     buttons: [{text: '取消'}, {text: '确定'}],
-    showTakeOff: true
+    showTakeOff: true,
+    showFooter: true
   },
 
   /**
@@ -26,11 +27,21 @@ Page({
   onLoad: function (options) {
     // console.log(options);
     const btnType = options.type;
-    this._decideBtn(btnType);
+    if(btnType === 'buy') {
+      // 已购买的商品不再提供底部footer
+      this.setData({
+        showFooter: false
+      })
+    } else {
+      this._decideBtn(btnType);
+      this.setData({
+        btnType
+      })
+    }
+    // 显示商品详情
     const productDetail = productModel.getProductDetail();
     this.setData({
-      productDetail,
-      btnType
+      productDetail
     })
   },
   /**

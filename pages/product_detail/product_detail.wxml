@@ -15,7 +15,7 @@
     <view class="detail-title">-- 详情 --</view>
     <text class="content">{{productDetail.content}}</text>
   </view>
-  <view class="footer">
+  <view class="footer" wx:if="{{showFooter}}">
     <button class="{{disableBtn ? 'button-disabled' : ''}}" type="default" disabled="{{disableBtn}}" size="default" plain="{{false}}" bind:tap="onTap" hover-class="button-hover">{{btnValue}}</button>
     <button wx:if="{{btnType=='publish' && showTakeOff}}" type="default" size="default" plain="{{false}}" bind:tap="onTakeoff" hover-class="button-hover">我不想卖了</button>
     <view wx:if="{{enFavor}}" class="favorBtn">

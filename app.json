@@ -6,7 +6,8 @@
     "pages/category_detail/category_detail",
     "pages/news/news",
     "pages/publish/publish",
-    "pages/recycle_plan/recycle_plan"
+    "pages/recycle_plan/recycle_plan",
+    "pages/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",

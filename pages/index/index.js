@@ -17,6 +17,16 @@ Page({
     })
   },
   /**
+   *跳转到搜索页
+   *
+   * @param {*} event
+   */
+  onSearch(event) {
+    wx.navigateTo({
+      url: '/pages/search/search'
+    })
+  },
+  /**
    *跳转到分类详情页面，并转递图标名称参数
    *
    * @param {*} event

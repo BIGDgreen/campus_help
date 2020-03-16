@@ -9,7 +9,8 @@ Page({
    */
   data: {
     productDetail: null,
-    btnValue: '',
+    btnValueLeft: '',
+    btnValueRight: '',
     disableBtn: false,
     enFavor: false, // 是否允许收藏
     favor: false,
@@ -17,7 +18,7 @@ Page({
     dialogContent: null,
     btnType: '',
     buttons: [{text: '取消'}, {text: '确定'}],
-    showTakeOff: true,
+    showRightBtn: true,
     showFooter: true
   },
 
@@ -43,6 +44,7 @@ Page({
     this.setData({
       productDetail
     })
+    // 显示收藏情况
   },
   /**
    *点击按钮，触发收藏事件
@@ -60,7 +62,7 @@ Page({
    *
    * @param {*} event
    */
-  onTap(event) { 
+  onTapLeft(event) { 
     console.log(this.data.btnType);
     if(this.data.btnType == 'publish') {
       this.setData({
@@ -77,14 +79,23 @@ Page({
    *
    * @param {*} event
    */
-  onTakeoff(event) {
-    this.setData({
-      dialogShow: true,
-      dialogContent: {
-        type: 1,
-        text: '是否确定下架该商品？'
-      }
-    })
+  onTapRight(event) {
+    console.log(this.data.btnType);
+    if(this.data.btnType == 'product') {
+      // 立即购买
+      wx.navigateTo({
+        url: '/pages/pay/pay'
+      });
+    } else {
+      // 下架商品
+      this.setData({
+        dialogShow: true,
+        dialogContent: {
+          type: 1,
+          text: '是否确定下架该商品？'
+        }
+      })
+    }
   },
   /**
    *点击弹出框按钮
@@ -114,26 +125,31 @@ Page({
    */
   _decideBtn(value) {
     const btnValue = {
-      'product': '马上咨询',
-      'publish': '我已卖出',
-      'sell': '已卖出',
-      'takeOff': '已下架',
-      'recycle': '已回收'
+      'product': ['马上咨询', '立即购买'],
+      'publish': ['我已卖出', '我不想卖了'],
+      'sell': ['已卖出'],
+      'takeOff': ['已下架'],
+      'recycle': ['已回收']
     }[value];
     this.setData({
-      btnValue
+      btnValueLeft: btnValue[0],
+      btnValueRight: btnValue[1] || '',
+      showRightBtn: btnValue[1]
     });
+    // 已卖出、已下架和已回收的按钮禁用
     if(value == 'sell' || value == 'takeOff' || value == 'recycle') {
       this.setData({
         disableBtn: true,
-        showTakeOff: false
+        showRightBtn: false
       })
     }
-    // 添加收藏按钮
+    // 添加收藏按钮和立即购买
     if(value == 'product') {
       this.setData({
-        enFavor: true
+        enFavor: true,
+        btnValueRight: '立即购买'
       })
+      // 获取收藏按钮的状态并设置
     }
   }
 })

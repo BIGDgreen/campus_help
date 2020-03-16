@@ -13,12 +13,12 @@ class ProductModel extends HTTP {
       {
         imageSrc: 'http://qz.faisys.com/image/wxImage/default_ablum.jpg',
         title: '标题1',
-        updateTime: '2020-1-2'
+        price: 100
       },
       {
         imageSrc: 'http://qz.faisys.com/image/wxImage/default_ablum.jpg',
         title: '标题2',
-        updateTime: '2019-12-12'
+        price: 20
       }
     ]
     return hotLists;
@@ -35,7 +35,7 @@ class ProductModel extends HTTP {
       {
         id: 1,
         type: '床上用品',
-        price: '¥100',
+        price: 100,
         imageSrc: 'http://qz.faisys.com/image/wxImage/default_ablum.jpg',
         title: '床上三件套',
         updateTime: '2019-12-12',
@@ -44,7 +44,7 @@ class ProductModel extends HTTP {
       {
         id: 2,
         type: '电子产品',
-        price: '¥200',
+        price: 200,
         imageSrc: 'http://qz.faisys.com/image/wxImage/default_ablum.jpg',
         title: '标题2',
         updateTime: '2019-12-12',
@@ -76,6 +76,21 @@ class ProductModel extends HTTP {
     }
     return productDetail;
   }
+  /**
+   *获取选中商品的支付信息
+   *
+   * @returns
+   * @memberof ProductModel
+   */
+  getCurProduct() {
+    const curProduct = {
+      imageSrc: 'http://qz.faisys.com/image/wxImage/default_ablum.jpg',
+      title: '标题1',
+      price: 100
+    };
+    return curProduct;
+  }
+  
 }
 
 export default ProductModel

@@ -58,7 +58,7 @@ Page({
    *
    */
   onDelete() {
-    this.init();
+    this._init();
   },
   /**
    *取消搜索，回到主页
@@ -66,8 +66,7 @@ Page({
    * @param {*} event
    */
   onCancel(event) {
-    console.log(event)
-    this.init();
+    this._init();
     wx.navigateBack({
       delta: 1
     });
@@ -76,7 +75,7 @@ Page({
    *回到搜索页面初始状态
    *
    */
-  init() {
+  _init() {
     this.setData({
       inputValue: '',
       searched: false

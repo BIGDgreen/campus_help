@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "mp-cell": "/miniprogram_npm/weui-miniprogram/cell/cell",
+    "bm-panel": "/components/panel/index"
+  },
+  "navigationBarTitleText": "购买宝贝"
+}

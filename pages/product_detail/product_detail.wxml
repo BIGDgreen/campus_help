@@ -16,8 +16,23 @@
     <text class="content">{{productDetail.content}}</text>
   </view>
   <view class="footer" wx:if="{{showFooter}}">
-    <button class="{{disableBtn ? 'button-disabled' : ''}}" type="default" disabled="{{disableBtn}}" size="default" plain="{{false}}" bind:tap="onTap" hover-class="button-hover">{{btnValue}}</button>
-    <button wx:if="{{btnType=='publish' && showTakeOff}}" type="default" size="default" plain="{{false}}" bind:tap="onTakeoff" hover-class="button-hover">我不想卖了</button>
+    <button class="{{disableBtn ? 'button-disabled' : ''}}"
+            type="default"
+            disabled="{{disableBtn}}"
+            size="default" 
+            plain="{{false}}"
+            bind:tap="onTapLeft"
+            hover-class="button-hover">
+            {{btnValueLeft}}
+    </button>
+    <button wx:if="{{showRightBtn}}"
+            type="default"
+            size="default"
+            plain="{{false}}"
+            bind:tap="onTapRight"
+            hover-class="button-hover">
+            {{btnValueRight}}
+    </button>
     <view wx:if="{{enFavor}}" class="favorBtn">
       <bm-favor favor="{{favor}}" bind:tapFavor="onFavor"></bm-favor>
     </view>

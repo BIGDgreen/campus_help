@@ -3,7 +3,7 @@
   <view class="header" bind:tap="onSearch">
     <view class="box">
       <image src="/images/icon/search.png" />
-      <text>搜索商品</text>
+      <text class="input-title">搜索商品</text>
     </view>
   </view>
   <view class="swiper">
@@ -21,7 +21,10 @@
     </view>
       <block wx:for="{{hotLists}}" wx:key="title">
         <view class="weui-panel__bd">
-          <bm-panel bind:toDetail="toCategory" imageSrc="{{item.imageSrc}}" title="{{item.title}}" updateTime="{{item.updateTime}}"/>
+          <bm-panel bind:toDetail="toCategory"
+                    imageSrc="{{item.imageSrc}}"
+                    title="{{item.title}}"
+                    price="{{item.price}}"/>
         </view>
       </block>
   </view>

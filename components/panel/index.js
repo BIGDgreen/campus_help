@@ -7,10 +7,26 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    id: String,
-    imageSrc: String,
-    title: String,
-    updateTime: String
+    id: {
+      type: String,
+      value: ''
+    },
+    imageSrc: {
+      type: String,
+      value: ''
+    },
+    title: {
+      type: String,
+      value: ''
+    },
+    price: {
+      type: String,
+      value: ''
+    },
+    readOnly: {
+      type: Boolean,
+      value: false
+    }
   },
 
   /**
@@ -26,8 +42,10 @@ Component({
   methods: {
     // 跳转到相应页面
     toDetail() {
-      const id = this.properties.id;
-      this.triggerEvent('toDetail',{id},{});
+      if(!this.properties.readOnly) {
+        const id = this.properties.id;
+        this.triggerEvent('toDetail',{id},{});
+      }
     }
   }
 })

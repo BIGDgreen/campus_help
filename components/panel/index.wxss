@@ -1,2 +1,15 @@
 /* components/panel/index.wxss */
 @import '/miniprogram_npm/weui-miniprogram/weui-wxss/dist/style/weui.wxss';
+.com-container {
+  background: white;
+}
+.price-container {
+  font-weight: bold;
+  color: #de443a;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.price {
+  font-size: 1.2rem;
+}

@@ -70,7 +70,7 @@
 					"id": 1,
 					"name": "product_detail",
 					"pathName": "pages/product_detail/product_detail",
-					"query": "type=publish",
+					"query": "type=product",
 					"scene": null
 				},
 				{
@@ -98,6 +98,13 @@
 					"id": -1,
 					"name": "search",
 					"pathName": "pages/search/search",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pay",
+					"pathName": "pages/pay/pay",
 					"query": "",
 					"scene": null
 				}

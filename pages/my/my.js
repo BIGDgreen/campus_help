@@ -8,7 +8,7 @@ Page({
     authorized: false,
     userInfo: null,
     studentNum: 12343412,
-    introduce: '神仙本仙'
+    introduce: '一段描述'
   },
 
   /**

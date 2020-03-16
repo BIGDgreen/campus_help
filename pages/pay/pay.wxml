@@ -1,0 +1,27 @@
+<!--pages/pay/pay.wxml-->
+<view class="container">
+  <bm-panel readOnly="{{true}}"
+            price="{{curProduct.price}}"
+            title="{{curProduct.title}}"
+            imageSrc="{{curProduct.imageSrc}}" />
+  <mp-cell value="收货人" footer="{{username}}"></mp-cell>
+  <mp-cell value="备注" footer=""></mp-cell>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell__bd">
+      <textarea class="weui-textarea"
+                maxlength="-1"
+                bind:confirm="descriptionInput"
+                placeholder="填入备注信息"
+                style="height: 3.3em;padding:24rpx;font-size:34rpx;" />
+    </view>
+  </view>
+  <view class="footer">
+    <button type="default"
+            size="default"
+            plain="{{false}}"
+            bind:tap="onTap">
+            下单
+    </button>
+  </view>
+  
+</view>

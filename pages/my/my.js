@@ -1,4 +1,5 @@
-// pages/my/my.js
+import { LoginModel } from '../../models/loginModel'
+const loginModel = new LoginModel(); 
 Page({
 
   /**
@@ -19,19 +20,24 @@ Page({
   },
   
   /**
-   *获取用户信息
+   *获取用户信息并登录
    *
    * @param {*} event
    */
   getUserinfo(event) {
     // console.log("getUserInfo:::", event.detail.userInfo);
     const userInfo = event.detail.userInfo;
-    if(userInfo) {
-      this.setData({
-        authorized: true,
-        userInfo
-      });
-    }
+    loginModel.login((res) => {
+      if(res !== 'fail') {
+        const logined = loginModel.userLogined();
+        if(userInfo && logined) {
+          this.setData({
+            authorized: true,
+            userInfo
+          });
+        }
+      }
+    });
   },
 
   /**
@@ -52,21 +58,11 @@ Page({
    *
    */
   _userAuthorized() {
-    wx.getSetting({
-      success: (result)=>{
-        // console.log("getSetting:::", result);
-        if(result.authSetting['scope.userInfo']) {
-          wx.getUserInfo({
-            success: (result)=>{
-              // console.log("userInfo:::", result.userInfo);
-              this.setData({
-                authorized: true,
-                userInfo: result.userInfo
-              });
-            }
-          });
-        }
-      },
-    });
+    loginModel.userAuthorized((result) => {
+      this.setData({
+        authorized: true,
+        userInfo: result.userInfo
+      });
+    })
   }
 })

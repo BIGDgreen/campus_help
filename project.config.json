@@ -4,8 +4,9 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
+		"enhance": true,
 		"postcss": true,
 		"preloadBackgroundData": false,
 		"minified": true,
@@ -22,8 +23,7 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		},
-		"enhance": true
+		}
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.10.1",
@@ -106,6 +106,19 @@
 					"name": "pay",
 					"pathName": "pages/pay/pay",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "handle",
+					"pathName": "pages/handle/handle",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "chat_room",
+					"pathName": "pages/chat_room/chat_room",
 					"scene": null
 				}
 			]

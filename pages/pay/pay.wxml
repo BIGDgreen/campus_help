@@ -12,7 +12,7 @@
                 maxlength="-1"
                 bind:confirm="descriptionInput"
                 placeholder="填入备注信息"
-                style="height: 3.3em;padding:24rpx;font-size:34rpx;" />
+                style="height:3.3em;padding:24rpx;font-size:34rpx;" />
     </view>
   </view>
   <view class="footer">

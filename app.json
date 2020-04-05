@@ -8,7 +8,10 @@
     "pages/publish/publish",
     "pages/recycle_plan/recycle_plan",
     "pages/search/search",
-    "pages/pay/pay"
+    "pages/pay/pay",
+    "pages/handle/handle",
+    "pages/post_recycle/post_recycle",
+    "pages/chat_room/chat_room"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -26,6 +29,12 @@
         "text": "首页",
         "iconPath": "/images/home/home@default.png",
         "selectedIconPath": "/images/home/home@active.png"
+      },
+      {
+        "pagePath": "pages/handle/handle",
+        "text": "处理",
+        "iconPath": "/images/handle/handle@default.png",
+        "selectedIconPath": "/images/handle/handle@active.png"
       },
       {
         "pagePath": "pages/publish/publish",

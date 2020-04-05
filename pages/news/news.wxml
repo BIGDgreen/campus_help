@@ -4,7 +4,8 @@
     <bm-notification avatar="{{item.avatar}}"
                      unreadNum="{{item.unreadNum}}"
                      name="{{item.name}}"
-                     latestNote="{{item.latestNote}}">
+                     latestNote="{{item.latestNote}}"
+                     bind:tap="toChat">
     </bm-notification>
   </block>
 </view>

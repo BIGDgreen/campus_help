@@ -9,8 +9,8 @@
     </view>
     <view class="infoText-wrapper" wx:if="{{authorized}}">
       <text class="info username">{{userInfo.nickName}}</text>
-      <text class="info studentNum">{{studentNum}}</text>
-      <text class="info introduce">{{introduce}}</text>
+      <!-- <text class="info studentNum">{{studentNum}}</text>
+      <text class="info introduce">{{introduce}}</text> -->
     </view>
     <view class="noLogin" wx:if="{{!authorized}}">
       <text class="info">登录发现更多精彩</text>

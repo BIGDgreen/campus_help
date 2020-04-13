@@ -1,0 +1,18 @@
+<!--pages/perfect_express/perfect_express.wxml-->
+<view class="container">
+  <view class="sender">
+    作为发货人：
+    发货人
+    快递公司
+    发货地址
+    发货人电话
+    物品类型
+    重量
+  </view>
+  <view class="receiver">
+    作为收货人：
+    收货地址
+    收货人名称
+    收货人电话
+  </view>
+</view>

@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "bm-notification": "/components/notification/index"
+    "bm-notification": "/components/notification/index",
+    "bm-noLogin": "/components/noLogin/index"
   },
   "navigationBarTitleText": "我的消息"
 }

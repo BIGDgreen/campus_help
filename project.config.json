@@ -70,7 +70,7 @@
 					"id": 1,
 					"name": "product_detail",
 					"pathName": "pages/product_detail/product_detail",
-					"query": "type=product",
+					"query": "type=product&id=2",
 					"scene": null
 				},
 				{
@@ -119,6 +119,14 @@
 					"id": -1,
 					"name": "chat_room",
 					"pathName": "pages/chat_room/chat_room",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 9,
+					"name": "perfect_express",
+					"pathName": "pages/perfect_express/perfect_express",
+					"query": "",
 					"scene": null
 				}
 			]

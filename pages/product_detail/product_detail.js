@@ -1,6 +1,8 @@
 // pages/hot-detail/hot_detail.js
 import ProductModel from '../../models/productModel'
+import { Filter } from '../../utils/filter';
 const productModel = new ProductModel();
+const filter = new Filter();
 
 Page({
 
@@ -25,8 +27,9 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    // console.log(options);
+  async onLoad(options) {
+    console.log(options);
+    const id = options.id;
     const btnType = options.type;
     if(btnType === 'buy') {
       // 已购买的商品不再提供底部footer
@@ -40,7 +43,9 @@ Page({
       })
     }
     // 显示商品详情
-    const productDetail = productModel.getProductDetail();
+    const productDetail = await productModel.getProductDetail(id);
+    productDetail.updateTime = filter.formatDate(productDetail.updateTime);
+    console.log(productDetail);
     this.setData({
       productDetail
     })

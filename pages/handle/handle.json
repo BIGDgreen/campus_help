@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "bm-noLogin": "/components/noLogin/index",
     "mp-cells": "/miniprogram_npm/weui-miniprogram/cells/cells",
     "mp-cell": "/miniprogram_npm/weui-miniprogram/cell/cell",
     "mp-dialog": "/miniprogram_npm/weui-miniprogram/dialog/dialog"

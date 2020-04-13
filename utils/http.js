@@ -1,4 +1,4 @@
-import { common } from './commonData.js'
+import { CommonData } from './commonData.js'
 
 /**
  * 请求封装，返回Promise对象
@@ -11,18 +11,18 @@ class HTTP {
   }
   _request(url, data = {}, method = 'GET', resolve, reject) {
     wx.request({
-      url: common.url + url,
+      url: CommonData.baseUrl + url,
       method: method,
       data: data,
       header: {
         'content-type': 'application/json',
-        'appkey': config.appkey
+        'Authorization': wx.getStorageSync('token')
       },
       success: (res) => {   
         // console.log("res:::",res);
         let code = res.statusCode.toString();
-        if(code.startsWith('2')) {
-          resolve(res.data);
+        if(code.startsWith('2') && res.data.status === 'success') {
+          resolve(res.data.data);
         } else {
           reject();
           // 服务器异常

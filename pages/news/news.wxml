@@ -1,5 +1,5 @@
 <!--pages/news/news.wxml-->
-<view class="container">
+<view class="container" wx:if="{{logined}}">
   <block wx:for="{{notifications}}">
     <bm-notification avatar="{{item.avatar}}"
                      unreadNum="{{item.unreadNum}}"
@@ -9,3 +9,5 @@
     </bm-notification>
   </block>
 </view>
+
+<view wx:else><bm-noLogin></bm-noLogin></view>

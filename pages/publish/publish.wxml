@@ -1,10 +1,10 @@
 <!--pages/publish/publish.wxml-->
-<view class="container">
+<view class="container" wx:if="{{logined}}">
   <view class="page__bd">
     <mp-form id="form" rules="{{rules}}" models="{{formData}}">
         <mp-cells>
-          <mp-cell prop="title" title="标题" ext-class="">
-            <input bindinput="titleInput" data-field="title" class="weui-input" placeholder="请输入标题"/>
+          <mp-cell prop="commodity_name" title="名称" ext-class="">
+            <input bindinput="titleInput" data-field="commodity_name" class="weui-input" placeholder="请输入商品名称"/>
           </mp-cell>
           <mp-cell prop="price" title="售价(元)" ext-class="">
             <input bindinput="priceInput" data-field="price" class="weui-input" placeholder="请输入您想要卖出的价格"/>
@@ -35,7 +35,7 @@
         <view class="weui-cell">
             <view class="weui-cell__bd">
               <textarea class="weui-textarea" maxlength="-1" bind:confirm="descriptionInput" placeholder="请输入您的物品描述：名称、新旧程度、颜色、品牌等" style="height: 3.3em" />
-              <mp-uploader max-count="5" bindfail="uploadError" bindsuccess="uploadSuccess" select="{{selectFile}}" upload="{{uplaodFile}}" files="{{files}}" title="" tips=""></mp-uploader>
+              <mp-uploader max-count="5" bindfail="uploadError" bindsuccess="uploadSuccess" select="{{selectFile}}" upload="{{uploadFile}}" files="{{files}}" title="" tips=""></mp-uploader>
             </view>
         </view>
     </view>
@@ -50,3 +50,5 @@
     </view>
   </view>
 </view>
+
+<view wx:else><bm-noLogin></bm-noLogin></view>

@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "bm-tag": "/components/tag/index",
-    "bm-category": "/pages/category_detail/category_detail"
+    "bm-category": "/pages/category_detail/category_detail",
+    "bm-loading": "/components/loading/index"
   },
   "navigationBarTitleText": "搜索"
 }

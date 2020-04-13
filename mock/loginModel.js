@@ -15,7 +15,7 @@ class LoginModel {
         console.log("code:::", res);
         // 发送请求，获取token
         wx.request({
-          url: CommonData.baseUrl + '/wx/login',
+          url: CommonData.url + '/wx/login',
           data: {
             code: res.code
           },
@@ -24,10 +24,6 @@ class LoginModel {
             const token = res.header.token;
             wx.setStorageSync("token",token);
             fun('success');
-          },
-          fail: (err) => {
-            fun('fail');
-            console.error(err);
           },
           complete: () => {
             wx.hideLoading();
@@ -47,7 +43,6 @@ class LoginModel {
    * @memberof LoginModel
    */
   userAuthorized(fun) {
-    if(!this.userLogined()) return;
     wx.getSetting({
       success: (result)=>{
         // console.log("getSetting:::", result);

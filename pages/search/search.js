@@ -4,7 +4,6 @@ import ProductModel from '../../models/productModel'
 const keywordModel = new KeywordModel()
 const productModel = new ProductModel()
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -13,8 +12,10 @@ Page({
     hotWords: [], // 热门搜索
     searched: false,  // 控制搜索结果的显示
     loadingCenter: false,
+    noResult: false,
+    loading: false,
     inputValue: '',
-    dataArray: [] // 搜索结果
+    searchRes: [] // 搜索结果
   },
 
   /**
@@ -25,9 +26,9 @@ Page({
     this.setData({
       historyWords: keywordModel.getHistory()
     });
-    const hotWords = keywordModel.getHot()
+    // const hotWords = keywordModel.getHot()
     this.setData({
-      hotWords
+      hotWords: keywordModel.getHot()
     })
       // .then(res => {
       //   // console.log("hotTags:::", res.hot);
@@ -37,19 +38,51 @@ Page({
       // })
   },
 
-  onConfirm(event) {
-    console.log("confirm", event)
-    const input = event.detail.value || event.detail.tagContent
-    if(input && input.trim()) {
+  /**
+   *确认搜索
+   *
+   * @param {*} event
+   */
+  async onConfirm(event) {
+    // console.log("confirm", event)
+    this.loadingCenter = true;
+    const inputValue = event.detail.value || event.detail.tagContent;
+    if(inputValue && inputValue.trim()) {
       // 将本次搜索加入历史记录
-      keywordModel.addHistory(input)
+      keywordModel.addHistory(inputValue)
       // 获取搜索结果
-      productModel.getCategoryList();
-      // 显示搜索结果
+      const searchRes = await productModel.getSearchRes(inputValue).catch(err => console.error(new Error(err)));
+      console.log("searchRes:::", searchRes);
       this.setData({
+        noResult: !searchRes || !searchRes.length,
         searched: true,
-        inputValue: input,
-      })
+        inputValue,
+        loadingCenter: false,
+        searchRes
+      });
+      // productModel.getSearchRes(input)
+      //   .then((res) => {
+      //     console.log("searchRes:::", res);
+      //     // 显示搜索结果
+      //     this.setData({
+      //       searched: true,
+      //       inputValue: input,
+      //       loadingCenter: false,
+      //       searchRes
+      //     })
+      //     // 搜索结果为空
+      //     if(res.length === 0) {
+      //       this.setData({
+      //         noResult: true
+      //       })
+      //     }
+      //   })
+      //   .catch((err) => {
+      //     console.error("searchRes:::", err);
+      //     this.setData({
+      //       loadingCenter: false
+      //     })
+      //   })
     }
   },
 
@@ -78,7 +111,8 @@ Page({
   _init() {
     this.setData({
       inputValue: '',
-      searched: false
+      searched: false,
+      noResult: false
     }) 
   }
 })

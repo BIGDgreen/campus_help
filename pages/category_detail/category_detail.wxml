@@ -1,7 +1,7 @@
 <!--pages/category_detail/category_detail.wxml-->
 <view class="container">
   <block wx:for="{{categoryList}}" wx:key="id">
-    <bm-panel bind:toDetail="toCategory" imageSrc="{{item.imageSrc}}" title="{{item.title}}" price="{{item.price}}">
+    <bm-panel data-id="{{item.commodityId}}" bind:toDetail="toCategory" imageSrc="{{item.commodityIcon}}" title="{{item.commodityName}}" price="{{item.price}}">
       <view slot="tags">
         <block wx:for="{{item.tags}}" wx:key="*this">
           <bm-tag class="tag" tagContent="{{item}}"></bm-tag>
@@ -9,4 +9,5 @@
       </view>
     </bm-panel>
   </block>
+  <text class="noResult" wx:if="{{noResult}}">暂时没有更多数据~</text>
 </view>

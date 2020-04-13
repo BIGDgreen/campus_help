@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "bm-noLogin": "/components/noLogin/index",
     "bm-tag": "/components/tag/index",
     "mp-uploader": "/miniprogram_npm/weui-miniprogram/uploader/uploader",
     "mp-toptips": "/miniprogram_npm/weui-miniprogram/toptips/toptips",

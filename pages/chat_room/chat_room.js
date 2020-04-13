@@ -1,4 +1,4 @@
-import NotificationModel from '../../models/notificationModel.js'
+import NotificationModel from '../../models/notificationModel'
 const notificationModel = new NotificationModel();
 Page({
   data: {
@@ -7,7 +7,7 @@ Page({
     othersideAvatar: 'http://qz.faisys.com/image/wxImage/default_ablum.jpg',
     msgs: [],
     isMe: false,
-    inputValue: ''
+    inputValue: '',
   },
   onLoad(options) {
     // 获取用户信息

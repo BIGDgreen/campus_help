@@ -44,7 +44,9 @@ class KeywordModel extends HTTP{
         // 原历史记录中不存在，则加入历史记录
         words.unshift(inputValue);
         // 截取1~10个
-        words = words.length > this.maxLength ? words.slice(0, 10) : words;
+        if(words.length > this.maxLength) {
+          words = words.slice(0, 10)
+        }
         wx.setStorageSync(this.key, words);
       }
     }

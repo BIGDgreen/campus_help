@@ -1,10 +1,12 @@
-// pages/handle/handle.js
+import { LoginModel } from '../../models/loginModel'
+const loginModel = new LoginModel();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    logined: false,
     buttons: [{text: '取消'}, {text: '确定'}],
     dialogShow: false
   },
@@ -13,7 +15,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      logined: loginModel.userLogined()
+    })
   },
   
   /**
@@ -49,6 +53,14 @@ Page({
     wx.navigateTo({
       url: '/pages/post_recycle/post_recycle',
     });
+  },
+  /**
+   *进入完善快递信息页面
+   */
+  perfectExpress() {
+    console.log("111");
+    wx.navigateTo({
+      url: '/pages/perfect_express/perfect_express'
+    });
   }
-
 })

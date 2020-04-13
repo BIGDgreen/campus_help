@@ -11,7 +11,8 @@
     "pages/pay/pay",
     "pages/handle/handle",
     "pages/post_recycle/post_recycle",
-    "pages/chat_room/chat_room"
+    "pages/chat_room/chat_room",
+    "pages/perfect_express/perfect_express"
   ],
   "window": {
     "backgroundTextStyle": "light",

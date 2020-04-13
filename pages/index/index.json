@@ -2,6 +2,7 @@
   "usingComponents": {
     "bm-swiper": "/components/swiper/index",
     "bm-grid": "/components/gird/index",
-    "bm-panel": "/components/panel/index"
+    "bm-panel": "/components/panel/index",
+    "bm-tag": "/components/tag/index"
   }
 }

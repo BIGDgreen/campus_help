@@ -10,10 +10,12 @@ Page({
     icons: iconsData,
     hotLists: []
   },
-  onLoad: function () {
+  async onLoad() {
+    const hotLists = await productModel.getHotList();
+    console.log("hotList:::", hotLists);
     // 获取热门闲置列表
     this.setData({
-      hotLists: productModel.getHotList()
+      hotLists
     })
   },
   /**
@@ -32,8 +34,8 @@ Page({
    * @param {*} event
    */
   tapGrid(event) {
-    // console.log("tapGrid:::", event.detail.iconText);
     const iconText = event.detail.iconText;
+    // console.log(iconText);
     wx.navigateTo({
       url: `/pages/category_detail/category_detail?type=product&category=${iconText}`,
     });
@@ -41,9 +43,11 @@ Page({
   /**
    *跳转到商品详情
    */
-  toCategory() {
+  toCategory(e) {
+    console.log("detail:::" ,e);
+    const id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/pages/product_detail/product_detail?type=product'
+      url: `/pages/product_detail/product_detail?type=product&id=${id}`
     });
   }
 })

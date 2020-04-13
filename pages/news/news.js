@@ -1,23 +1,32 @@
 // pages/news/news.js
 import NotificationModel from '../../models/notificationModel'
+import { LoginModel } from '../../models/loginModel'
 const notificationModel = new NotificationModel();
+const loginModel = new LoginModel();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    notifications: []
+    notifications: [],
+    logined: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const notifications = notificationModel.getNotifications();
+    const logined = loginModel.userLogined()
     this.setData({
-      notifications
+      logined
     })
+    if(logined) {
+      const notifications = notificationModel.getNotifications();
+      this.setData({
+        notifications
+      })
+    }
   },
 
   toChat(e) {

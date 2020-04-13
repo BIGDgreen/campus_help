@@ -16,7 +16,7 @@
       <text class="info">登录发现更多精彩</text>
     </view>
   </view>
-  <view class="transList-wrapper weui-panel weui-panel_access">
+  <view class="transList-wrapper weui-panel weui-panel_access" wx:if="{{authorized}}">
     <mp-cells>
       <mp-cell value="买卖清单">
         <image slot="icon" src="/images/my/exchange.png" style="margin-right: 10rpx;vertical-align: middle;width:20px; height: 20px;"></image>

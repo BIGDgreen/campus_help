@@ -1,5 +1,5 @@
 <!--pages/handle/handle.wxml-->
-<view class="container">
+<view class="container" wx:if="{{logined}}">
   <mp-cells>
     <mp-cell hover value="以物易物" data-type="product" bind:tap="changeProject">
       <image slot="icon" src="/images/handle/changeProject.png" style="margin-right: 10rpx;vertical-align: middle;width:20px; height: 20px;"></image>
@@ -7,7 +7,7 @@
     <mp-cell hover value="添加回收" data-type="recycle" bind:tap="addRecycle">
       <image slot="icon" src="/images/handle/addRecycle.png" style="margin-right: 10rpx;vertical-align: middle;width:20px; height: 20px;"></image>
     </mp-cell>
-    <mp-cell hover value="完善快递信息" data-type="recycle" bind:tap="inquireMy">
+    <mp-cell hover value="完善快递信息" data-type="recycle" bind:tap="perfectExpress">
       <image slot="icon" src="/images/handle/express.png" style="margin-right: 10rpx;vertical-align: middle;width:20px; height: 20px;"></image>
     </mp-cell>
   </mp-cells>
@@ -18,3 +18,5 @@
     <view>是否确定加入以物易物？</view>
   </mp-dialog>
 </view>
+
+<view wx:else><bm-noLogin></bm-noLogin></view>

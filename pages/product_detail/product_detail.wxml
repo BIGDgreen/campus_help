@@ -1,10 +1,10 @@
 <!--pages/hot-detail/hot_detail.wxml-->
 <view class="container">
-  <bm-swiper image-class="image-style" swiper-class="swiper-style" autoplay="{{false}}" backgrounds="{{productDetail.images}}"></bm-swiper>
+  <bm-swiper image-class="image-style" swiper-class="swiper-style" autoplay="{{false}}" backgrounds="{{productDetail.pics}}"></bm-swiper>
   <view class="detail-wrapper">
     <view class="header">
       <text class="price">{{productDetail.price}}</text>
-      <text class="title">{{productDetail.title}}</text>
+      <text class="title">{{productDetail.commodityName}}</text>
       <text class="updateTime">{{productDetail.updateTime}}</text>
       <view>
         <block wx:for="{{productDetail.tags}}">
@@ -13,7 +13,7 @@
       </view>
     </view>
     <view class="detail-title">-- 详情 --</view>
-    <text class="content">{{productDetail.content}}</text>
+    <text class="content">{{productDetail.commodityContent}}</text>
   </view>
   <view class="footer" wx:if="{{showFooter}}">
     <button class="{{disableBtn ? 'button-disabled' : ''}}"

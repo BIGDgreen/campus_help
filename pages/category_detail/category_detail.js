@@ -1,13 +1,19 @@
 // pages/category_detail/category_detail.js
 import ProductModel from '../../models/productModel'
+import { UserModel } from '../../models/userModel'
 const productModel = new ProductModel();
+const userModel = new UserModel();
 Component({
   properties: {
     type: {
       type: String,
       value: ''
     },
-    category: {
+    fromTitle: {
+      type: String,
+      value: ''
+    },
+    title: {
       type: String,
       value: ''
     },
@@ -19,29 +25,55 @@ Component({
   data: {
     noResult: false,
   },
-  async attached() {
-    if(this.properties.categoryList.length > 0) {
-      // 根据搜索结果显示
-      this.setData({
-        categoryList: this.properties.categoryList
-      })
-      return;
-    }
-    // 根据分类显示
-    // console.log("category_detail:::", this.properties.category); // 当前分类
-    const category = this.properties.category;
-    const categoryList = await productModel.getCategoryList(category).catch(err => {console.error("categoryList:::", err)});
-    if(categoryList.length === 0) {
-      this.setData({
-        noResult: true
-      })
-    }
-    this.setData({
-      categoryList
-    })
-  
+  attached() {
+    this._setNavogationTitle();
+    this._showCategoryList();
   },
   methods: {
+    _setNavogationTitle() {
+      wx.setNavigationBarTitle({
+        title: this.properties.fromTitle
+      });
+    },
+    /**
+     * 显示列表
+     */
+    async _showCategoryList() {
+      const fromTitle = this.properties.fromTitle;
+      const title = this.properties.title
+      let categoryList = [];
+      switch (title) {
+        case 'category':
+          categoryList = await productModel.getCategoryList(fromTitle);
+          break;
+        case 'collection':
+          categoryList = await userModel.getMyList('collection');
+          break;
+        case 'recycle':
+          categoryList = await userModel.getMyList('recycle');
+          break;
+        case 'sold':
+          categoryList = await userModel.getMyList('sold');
+          break;
+        case 'bought':
+          categoryList = await userModel.getMyList('bought');
+          break;
+        case 'publish':
+          categoryList = await userModel.getMyList('sub');
+          break;
+        default:
+          categoryList = [];
+      }
+      if(categoryList.length === 0) {
+        this.setData({
+          noResult: true
+        })
+      } else {
+        this.setData({
+          categoryList
+        })
+      }
+    },
     /**
     *跳转到相关详情页面
     */

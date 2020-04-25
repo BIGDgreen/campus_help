@@ -1,1 +1,1 @@
-/* pages/post_recycle/post_recycle.wxss */
+.weui-btn-area{margin:1.2rem auto}.weui-btn-area button{background:rgba(222,68,58,0.9);font-weight:500}.weui-btn-area button:hover{background:rgba(222,68,58,0.6)}

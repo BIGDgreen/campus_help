@@ -58,7 +58,6 @@ Page({
    *进入完善快递信息页面
    */
   perfectExpress() {
-    console.log("111");
     wx.navigateTo({
       url: '/pages/perfect_express/perfect_express'
     });

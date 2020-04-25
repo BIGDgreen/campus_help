@@ -60,29 +60,6 @@ Page({
         loadingCenter: false,
         searchRes
       });
-      // productModel.getSearchRes(input)
-      //   .then((res) => {
-      //     console.log("searchRes:::", res);
-      //     // 显示搜索结果
-      //     this.setData({
-      //       searched: true,
-      //       inputValue: input,
-      //       loadingCenter: false,
-      //       searchRes
-      //     })
-      //     // 搜索结果为空
-      //     if(res.length === 0) {
-      //       this.setData({
-      //         noResult: true
-      //       })
-      //     }
-      //   })
-      //   .catch((err) => {
-      //     console.error("searchRes:::", err);
-      //     this.setData({
-      //       loadingCenter: false
-      //     })
-      //   })
     }
   },
 

@@ -21,7 +21,8 @@ Page({
       tags: [],
       content: '',
       pics: []
-    }
+    },
+    isAgree: false
   },
   /**
    * 生命周期函数--监听页面加载
@@ -90,7 +91,11 @@ Page({
     // console.log("des:::", event);
     this._bindFormItem(event, 'content');
   },
-  
+  bindAgreeChange: function (e) {
+    this.setData({
+        isAgree: !!e.detail.value.length
+    });
+  },
   /**
    *提交商品信息表单
    *

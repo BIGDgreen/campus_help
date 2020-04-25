@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "flow-bin": "^0.123.0",
     "weui-miniprogram": "^0.2.1"
   }
 }

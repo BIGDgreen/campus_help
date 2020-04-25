@@ -46,10 +46,31 @@ Page({
    * @param {*} event
    */
   inquireMy(event) {
-    console.log("inquireMy:::", event);
     const type = event.currentTarget.dataset.type;
+    const mytype = event.currentTarget.dataset.mytype;
+    let fromTitle = '';
+    switch (mytype) {
+      case 'collection':
+        fromTitle = '我的收藏';
+        break;
+      case 'recycle':
+        fromTitle = '我的回收'
+        break;
+      case 'sold':
+        fromTitle = '我卖出的'
+        break;
+      case 'bought':
+        fromTitle = '我购买的'
+        break;
+      case 'publish':
+        fromTitle = '我发布的'
+        break;
+      default:
+        console.log("default");
+    }
+
     wx.navigateTo({
-      url: `/pages/category_detail/category_detail?type=${type}`,
+      url: `/pages/category_detail/category_detail?type=product&fromTitle=${fromTitle}&title=${mytype}`,
     });
   },
 
@@ -58,11 +79,13 @@ Page({
    *
    */
   _userAuthorized() {
-    loginModel.userAuthorized((result) => {
-      this.setData({
-        authorized: true,
-        userInfo: result.userInfo
-      });
-    })
+    if(loginModel.userLogined()) {
+      loginModel.userAuthorized((result) => {
+        this.setData({
+          authorized: true,
+          userInfo: result.userInfo
+        });
+      })
+    }
   }
 })

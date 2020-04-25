@@ -34,7 +34,7 @@
             {{btnValueRight}}
     </button>
     <view wx:if="{{enFavor}}" class="favorBtn">
-      <bm-favor favor="{{favor}}" bind:tapFavor="onFavor"></bm-favor>
+      <bm-favor favor="{{productDetail.mark}}" bind:tapFavor="onFavor"></bm-favor>
     </view>
   </view>
   <mp-dialog title="提示" show="{{dialogShow}}" data-type="{{dialogContent.type}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">

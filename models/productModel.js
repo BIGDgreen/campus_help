@@ -8,7 +8,8 @@ class ProductModel extends HTTP {
    */
   getHotList() {
     return this.request({
-      url: '/commodity/hots'
+      url: '/commodity/hots',
+      // needToken: false
     })
   }
 
@@ -23,7 +24,8 @@ class ProductModel extends HTTP {
       url: '/commodity/type',
       data: {
         type: category
-      }
+      },
+      needToken: false
     })
   }
 
@@ -35,7 +37,34 @@ class ProductModel extends HTTP {
    */
   getProductDetail(id) {
     return this.request({
-      url: `/commodity/detail/${id}`
+      url: `/commodity/detail/${id}`,
+      needToken: false
+    })
+  }
+
+  /**
+   *收藏该商品
+   *
+   * @param {*} id
+   * @returns
+   * @memberof ProductModel
+   */
+  markCategory(id) {
+    return this.request({
+      url: `/commodity/detail/${id}/mark`
+    })
+  }
+
+  /**
+   *取消收藏该商品
+   *
+   * @param {*} id
+   * @returns
+   * @memberof ProductModel
+   */
+  unMarkCategory(id) {
+    return this.request({
+      url: `/commodity/detail/${id}/mark`
     })
   }
 
@@ -51,7 +80,8 @@ class ProductModel extends HTTP {
       url: '/commodity/search',
       data: {
         search: value
-      }
+      },
+      needToken: false
     })
   }
   /**
@@ -64,7 +94,10 @@ class ProductModel extends HTTP {
     const curProduct = {
       imageSrc: 'http://qz.faisys.com/image/wxImage/default_ablum.jpg',
       title: '标题1',
-      price: 100
+      price: 100,
+      recipient_name: '张三',
+      recipient_phone: '18154254824',
+      recipient_address: '湖北武汉'
     };
     return curProduct;
   }
@@ -84,7 +117,18 @@ class ProductModel extends HTTP {
       data: formData
     })
   }
-  
+  /**
+   *支付
+   *
+   * @param {*} id
+   * @returns
+   * @memberof ProductModel
+   */
+  payCommdity(id) {
+    return this.request({
+      url: `/campus-plat/commodity/${id}/pay`
+    })
+  }
 }
 
 export default ProductModel

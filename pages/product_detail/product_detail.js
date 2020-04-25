@@ -10,12 +10,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    currentId: '',    // 当前商品的id
     productDetail: null,
     btnValueLeft: '',
     btnValueRight: '',
     disableBtn: false,
     enFavor: false, // 是否允许收藏
-    favor: false,
     dialogShow: false,
     dialogContent: null,
     btnType: '',
@@ -30,6 +30,7 @@ Page({
   async onLoad(options) {
     console.log(options);
     const id = options.id;
+    this.currentId = id;
     const btnType = options.type;
     if(btnType === 'buy') {
       // 已购买的商品不再提供底部footer
@@ -45,22 +46,33 @@ Page({
     // 显示商品详情
     const productDetail = await productModel.getProductDetail(id);
     productDetail.updateTime = filter.formatDate(productDetail.updateTime);
-    console.log(productDetail);
+    // console.log(productDetail);
     this.setData({
       productDetail
     })
-    // 显示收藏情况
   },
   /**
    *点击按钮，触发收藏事件
    */
   onFavor(event) {
     const behavior = event.detail.behavior;
-    const showText = behavior == 'favor' ? '收藏成功！' : '您已取消收藏';
-    wx.showToast({
-      title: showText,
-      icon: 'none',
-    });
+    if(behavior === 'favor') {
+      productModel.markCategory(this.currentId)
+        .then(() => {
+          wx.showToast({
+            title: '收藏成功！',
+            icon: 'none',
+          });
+        })
+    } else if(behavior === 'favor') {
+      productModel.unMarkCategory(this.currentId)
+        .then(() => {
+          wx.showToast({
+            title: '您已取消收藏',
+            icon: 'none',
+          });
+        })
+    }
   },
   /**
    *点击按钮，当进入我发布的页面时，处理事件
@@ -89,7 +101,7 @@ Page({
     if(this.data.btnType == 'product') {
       // 立即购买
       wx.navigateTo({
-        url: '/pages/pay/pay'
+        url: `/pages/pay/pay?id=${this.currentId}`
       });
     } else {
       // 下架商品

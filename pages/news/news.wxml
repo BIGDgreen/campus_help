@@ -2,7 +2,7 @@
 <view class="container" wx:if="{{logined}}">
   <block wx:for="{{notifications}}">
     <bm-notification avatar="{{item.avatar}}"
-                     unreadNum="{{item.unreadNum}}"
+                     unread="{{item.unread}}"
                      name="{{item.name}}"
                      latestNote="{{item.latestNote}}"
                      bind:tap="toChat">

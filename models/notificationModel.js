@@ -11,13 +11,13 @@ class NotificationModel extends HTTP {
     const notifications = [
       {
         avatar: 'http://qz.faisys.com/image/wxImage/default_ablum.jpg',
-        unreadNum: 1,
+        unread: true,
         name: '张三',
         latestNote: '在吗'
       },
       {
         avatar: 'http://qz.faisys.com/image/wxImage/default_ablum.jpg',
-        unreadNum: 0,
+        unreadNum: false,
         name: '李四',
         latestNote: '吃了吗'
       },

@@ -1,18 +1,70 @@
 <!--pages/perfect_express/perfect_express.wxml-->
-<view class="container">
-  <view class="sender">
-    作为发货人：
-    发货人
-    快递公司
-    发货地址
-    发货人电话
-    物品类型
-    重量
-  </view>
-  <view class="receiver">
-    作为收货人：
-    收货地址
-    收货人名称
-    收货人电话
-  </view>
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<view class="page">
+    <view class="page__bd">
+        <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+          <mp-cells title="发货人">
+              <mp-cell show-error prop="sender_name" title="姓名" ext-class="">
+                  <input bindinput="formInputChange" data-field="sender_name" class="weui-input" placeholder="发货人昵称"/>
+              </mp-cell>
+              <mp-cell show-error prop="sender_phone" title="手机号" ext-class="">
+                  <input bindinput="formInputChange" data-field="sender_phone" class="weui-input" placeholder="发货人手机号"/>
+              </mp-cell>
+              <mp-cell show-error prop="delivery_company " title="快递公司" ext-class="">
+                  <picker bindchange="bindCompanyChange" value="{{companyIndex}}" range="{{deliveryCompanies}}">
+                    <view class="weui-select_in-select-after">{{deliveryCompanies[companyIndex]}}</view>
+                  </picker>
+              </mp-cell>
+              <mp-cell show-error prop="type" title="货物类型" ext-class="">
+                  <picker bindchange="bindTypeChange" value="{{typeIndex}}" range="{{types}}">
+                    <view class="weui-select_in-select-after">{{types[typeIndex]}}</view>
+                  </picker>
+              </mp-cell>
+              <mp-cell show-error prop="weight" title="货物重量" ext-class="">
+                  <input bindinput="formInputChange" data-field="weight" class="weui-input" placeholder="货物重量"/>
+              </mp-cell>
+              <mp-cell show-error prop="sender_address" title="发货地" ext-class="">
+                  <picker data-field="sender_address" mode="region" value="{{sender_region}}" bindchange="bindSenderRegionChange">
+                      <view class="picker">
+                        {{sender_region[0]}}{{sender_region[1]}}{{sender_region[2]}}
+                      </view>
+                  </picker>
+              </mp-cell>
+          </mp-cells>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="发货地详细地址" style="height: 3.3em" bindinput="onSenderOrginInput" />
+                    <view class="weui-textarea-counter">0/200</view>
+                </view>
+            </view>
+          </view>
+          <mp-cells title="收货人">
+            <mp-cell show-error prop="recipient_name" title="姓名" ext-class="">
+                <input bindinput="formInputChange" data-field="recipient_name" class="weui-input" placeholder="收货人昵称"/>
+            </mp-cell>
+            <mp-cell show-error prop="recipient_phone" title="手机号" ext-class="">
+                <input bindinput="formInputChange" data-field="recipient_phone" class="weui-input" placeholder="收货人手机号"/>
+            </mp-cell>
+              <mp-cell show-error prop="recipient_address" title="收货地" ext-class="">
+                <picker data-field="recipient_address" mode="region" value="{{recipient_region}}" bindchange="bindRecipientRegionChange">
+                    <view class="picker">
+                      {{recipient_region[0]}}{{recipient_region[1]}}{{recipient_region[2]}}
+                    </view>
+                </picker>
+            </mp-cell>
+          </mp-cells>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="收货地详细地址" style="height: 3.3em" bindinput="onRecipientOrginInput" />
+                    <view class="weui-textarea-counter">0/200</view>
+                </view>
+            </view>
+          </view>
+        </mp-form>
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+        </view>
+    </view>
 </view>

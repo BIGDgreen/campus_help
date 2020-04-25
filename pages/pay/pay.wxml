@@ -4,7 +4,9 @@
             price="{{curProduct.price}}"
             title="{{curProduct.title}}"
             imageSrc="{{curProduct.imageSrc}}" />
-  <mp-cell value="收货人" footer="{{username}}"></mp-cell>
+  <mp-cell value="收货人" footer="{{curProduct.recipient_name}}"></mp-cell>
+  <mp-cell value="收货人电话" footer="{{curProduct.recipient_phone}}"></mp-cell>
+  <mp-cell value="收货地址" footer="{{curProduct.recipient_address}}"></mp-cell>
   <mp-cell value="备注" footer=""></mp-cell>
   <view class="weui-cells weui-cells_after-title">
     <view class="weui-cell__bd">

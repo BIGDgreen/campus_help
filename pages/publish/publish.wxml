@@ -6,9 +6,6 @@
           <mp-cell prop="commodity_name" title="名称" ext-class="">
             <input bindinput="titleInput" data-field="commodity_name" class="weui-input" placeholder="请输入商品名称"/>
           </mp-cell>
-          <mp-cell prop="price" title="售价(元)" ext-class="">
-            <input bindinput="priceInput" data-field="price" class="weui-input" placeholder="请输入您想要卖出的价格"/>
-          </mp-cell>
           <mp-cell prop="category" title="分类" ext-class="">
             <view class="weui-cell weui-cell_select">
                 <view class="weui-cell__bd">
@@ -21,15 +18,15 @@
         </mp-cells> 
     </mp-form>
     <view class="weui-cells__title">标签</view>
-          <view class="tag-wrapper">
-            <block wx:for="{{tags}}" wx:key="*this">
-              <bm-tag tagContent="{{item}}" bind:tagTap="onTag" data-index="{{index}}" tag-class="{{tagSelected[index]?'tag_selected':'tag_default'}}">
-                <view slot="after" wx:if="{{tagSelected[index]}}" bind:tap="onCancel" data-index="{{index}}">
-                  <image src="/images/publish/cancel.png" class="cancel"/>
-                </view>
-              </bm-tag>
-            </block>
+    <view class="tag-wrapper">
+      <block wx:for="{{tags}}" wx:key="*this">
+        <bm-tag tagContent="{{item}}" bind:tagTap="onTag" data-index="{{index}}" tag-class="{{tagSelected[index]?'tag_selected':'tag_default'}}">
+          <view slot="after" wx:if="{{tagSelected[index]}}" bind:tap="onCancel" data-index="{{index}}">
+            <image src="/images/publish/cancel.png" class="cancel"/>
           </view>
+        </bm-tag>
+      </block>
+    </view>
     <view class="weui-cells__title">物品描述</view>
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell">
@@ -39,16 +36,19 @@
             </view>
         </view>
     </view>
-    <view class="checkbox-wrapper">
-      <checkbox-group bindchange="checkboxChange">
-        <checkbox value="{{isRecycle}}" checked="{{checked}}"/>
-        我自愿加入<text bind:tap="joinRecycle" style="color:#22c2f7;">商品回收计划</text>
-      </checkbox-group>
-    </view>
+    <checkbox-group bindchange="bindAgreeChange">
+        <label class="weui-agree" for="weuiAgree">
+            <view class="weui-agree__text">
+                <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+                <view class="weui-agree__checkbox-icon">
+                    <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+                </view>
+                我自愿加入<navigator url="/pages/recycle_plan/recycle_plan" class="weui-agree__link">物品回收计划</navigator>
+            </view>
+        </label>
+    </checkbox-group>
     <view class="weui-btn-area">
         <button class="weui-btn" type="primary" bindtap="submitForm">提交</button>
     </view>
   </view>
 </view>
-
-<view wx:else><bm-noLogin></bm-noLogin></view>

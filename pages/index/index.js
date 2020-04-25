@@ -35,9 +35,8 @@ Page({
    */
   tapGrid(event) {
     const iconText = event.detail.iconText;
-    // console.log(iconText);
     wx.navigateTo({
-      url: `/pages/category_detail/category_detail?type=product&category=${iconText}`,
+      url: `/pages/category_detail/category_detail?type=product&fromTitle=${iconText}&title=category`,
     });
   },
   /**

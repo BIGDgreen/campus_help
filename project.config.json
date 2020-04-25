@@ -128,6 +128,12 @@
 					"pathName": "pages/perfect_express/perfect_express",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "post_recycle",
+					"pathName": "pages/post_recycle/post_recycle",
+					"scene": null
 				}
 			]
 		}

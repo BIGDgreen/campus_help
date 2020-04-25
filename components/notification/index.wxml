@@ -5,9 +5,7 @@
       <mp-cell hover>
         <view slot="title" style="position: relative;margin-right: 10px;">
             <image src="{{avatar}}" style="width: 50px; height: 50px; display: block"/>
-            <view wx:if="{{unreadNum > 0}}">
-              <mp-badge content="{{unreadNum}}" style="position: absolute;top: -.4em;right: -.4em;"/>
-            </view>
+              <mp-badge wx:if="{{unread}}" style="position: absolute;top: -.7em;right: -.3em;"/>
         </view>
         <view>{{name}}</view>
         <view style="font-size: 13px;color: #888888;">{{latestNote}}</view>

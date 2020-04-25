@@ -4,17 +4,29 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    avatar: String,
-    unreadNum: Number,
-    name: String,
-    latestNote: String
+    avatar: {
+      type: String,
+      value: ''
+    },
+    unread: {
+      type: Boolean,
+      value: false,
+    },
+    name: {
+      type: String,
+      value: ''
+    },
+    latestNote: {
+      type: String,
+      value: ''
+    }
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-
+    
   },
 
   /**

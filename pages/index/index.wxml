@@ -18,7 +18,8 @@
     <view class="weui-panel__hd">
       <image class="fire" src="/images/home/hot.png"/>
       <text>热门闲置</text>
-    </view>
+    </view>      
+    <scroll-view style='height:{{windowHeight - 50}}px;' scroll-y enable-back-to-top="{{true}}" bindscrolltolower="loadMore">
       <block wx:for="{{hotLists}}" wx:key="title">
         <view class="weui-panel__bd">
           <bm-panel data-id="{{item.commodityId}}"
@@ -34,5 +35,6 @@
           </bm-panel>
         </view>
       </block>
+    </scroll-view>
   </view>
 </view>

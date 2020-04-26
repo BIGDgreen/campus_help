@@ -1,13 +1,15 @@
 <!--pages/category_detail/category_detail.wxml-->
 <view class="container">
-  <block wx:for="{{categoryList}}" wx:key="id">
-    <bm-panel data-id="{{item.commodityId}}" bind:toDetail="toCategory" imageSrc="{{item.commodityIcon}}" title="{{item.commodityName}}" price="{{item.price}}">
-      <view slot="tags">
-        <block wx:for="{{item.tags}}" wx:key="*this">
-          <bm-tag class="tag" tagContent="{{item}}"></bm-tag>
-        </block>
-      </view>
-    </bm-panel>
-  </block>
   <text class="noResult" wx:if="{{!categoryList || categoryList.length === 0}}">暂时没有更多数据~</text>
+   <scroll-view wx:else style='height:{{windowHeight}}px;' scroll-y enable-back-to-top="{{true}}" bindscrolltolower="loadMore">
+    <block wx:for="{{categoryList}}" wx:key="id">
+      <bm-panel data-id="{{item.commodityId}}" bind:toDetail="toCategory" imageSrc="{{item.commodityIcon}}" title="{{item.commodityName}}" price="{{item.price}}">
+        <view slot="tags">
+          <block wx:for="{{item.tags}}" wx:key="*this">
+            <bm-tag class="tag" tagContent="{{item}}"></bm-tag>
+          </block>
+        </view>
+      </bm-panel>
+    </block>
+  </scroll-view>
 </view>

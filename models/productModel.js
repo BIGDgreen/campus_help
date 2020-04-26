@@ -6,10 +6,14 @@ class ProductModel extends HTTP {
    * @returns
    * @memberof ProductModel
    */
-  getHotList() {
+  getHotList(page = 1, size = 10) {
     return this.request({
       url: '/commodity/hots',
-      // needToken: false
+      needToken: false,
+      data: {
+        page,
+        size
+      }
     })
   }
 
@@ -19,11 +23,13 @@ class ProductModel extends HTTP {
    * @returns
    * @memberof ProductModel
    */
-  getCategoryList(category) {
+  getCategoryList(category, page = 1, size = 10) {
     return this.request({
       url: '/commodity/type',
       data: {
-        type: category
+        type: category,
+        page,
+        size
       },
       needToken: false
     })

@@ -22,11 +22,10 @@ class KeywordModel extends HTTP{
    * @memberof KeywordModel
    */
   getHot() {
-    // return this.request({
-    //   url:'/book/hot_keyword'
-    // })
-    const hotWords = ['女生','全新','九成新']
-    return hotWords
+    return this.request({
+      url: '/commodity/hots',
+      needToken: false,
+    })
   }
 
   /**

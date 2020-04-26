@@ -21,14 +21,18 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  async onLoad(options) {
     // console.log("histories:::", this.data.historyWords)
     this.setData({
       historyWords: keywordModel.getHistory()
     });
-    // const hotWords = keywordModel.getHot()
+    const hotList = await keywordModel.getHot();
+    let hotWords = [];
+    hotList.map((item) => {
+      hotWords.push(item.commodityName);
+    })
     this.setData({
-      hotWords: keywordModel.getHot()
+      hotWords
     })
       // .then(res => {
       //   // console.log("hotTags:::", res.hot);

@@ -8,7 +8,10 @@ Page({
   data: {
     backgrounds: ['/images/home/backgrounds/swiper1.jpg', '/images/home/backgrounds/swiper2.jpg'],
     icons: iconsData,
-    hotLists: []
+    hotLists: [],
+    page: 1,
+    noMore: false,
+    windowHeight:"",     //适配设备的高度
   },
   async onLoad() {
     const hotLists = await productModel.getHotList();
@@ -17,6 +20,30 @@ Page({
     this.setData({
       hotLists
     })
+    //获取设备信息，获取屏幕的Height属性
+    wx.getSystemInfo({
+      success: (res) => {
+        this.setData({
+          windowHeight : res.windowHeight
+        })
+      }
+    })
+  },
+  /**
+   *加载更多
+   *
+   * @returns
+   */
+  async loadMore() {
+    if(this.data.noMore) return;
+    this.data.page ++;
+    const tmp = await productModel.getHotList(this.data.page);
+    this.data.noMore = (!tmp || tmp.length === 0);
+    if(!this.data.noMore) {
+      this.setData({
+        hotLists: this.data.hotLists.concat(tmp)
+      })
+    }
   },
   /**
    *跳转到搜索页

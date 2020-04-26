@@ -9,9 +9,13 @@ class UserModel extends HTTP {
    * @returns
    * @memberof UserModel
    */
-  getMyList(type, page, size) {
+  getMyList(type, page = 1, size = 10) {
     return this.request({
-      url: `/user/${type}` 
+      url: `/user/${type}`,
+      data: {
+        page,
+        size
+      }
     })
   }
   /**

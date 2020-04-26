@@ -8,7 +8,7 @@ class LoginModel {
   login(userInfo, fun) {
     let { avatarUrl, city, country, gender, nickName, province } = userInfo;
     wx.showLoading({
-      title: '登录中，请稍候...',
+      title: '登录中...',
       mask: true
     })
     wx.login({

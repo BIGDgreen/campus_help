@@ -31,13 +31,15 @@ Page({
     productModel.payCommdity(this.currentId)
       .then(() => {
         wx.showToast({
-          title: '目前不提供实际的支付功能~',
+          title: '目前不提供实际的支付功能~默认您已支付成功',
           duration: 2000,
-          icon: "none",
-          success: () => {
-            wx.navigateBack();
-          }
+          icon: "none"
         })
+        setTimeout(() => {
+          wx.switchTab({
+            url: '/pages/index/index'
+          });
+        }, 2000);
       })
   }
 })

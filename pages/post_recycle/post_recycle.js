@@ -92,9 +92,11 @@ Page({
     })
   },
   typeInput(event) {
-    const type = this.data.accounts[this.data.accountIndex];
     this.setData({
       accountIndex: event.detail.value,
+    });
+    const type = this.data.accounts[this.data.accountIndex];
+    this.setData({
       ['formData.type']: type
     });
   },

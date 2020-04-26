@@ -6,8 +6,7 @@
                      name="{{item.name}}"
                      latestNote="{{item.latestNote}}"
                      data-title="{{item.name}}"
-                     data-senderid="{{item.userId}}"
-                     data-receiverid="{{item.userId === item.lastChat.senderId ? item.lastChat.receiverId : item.lastChat.senderId}}"
+                     data-receiverid="{{item.userId}}"
                      bind:tap="toChat">
     </bm-notification>
   </block>

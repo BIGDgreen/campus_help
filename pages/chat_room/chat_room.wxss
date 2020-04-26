@@ -1,9 +1,6 @@
 page {
   background-color: #f3f3f3;
 }
-.container .main-container {
-  height: calc(100vh - 130rpx);
-}
 .container .main-container .timeLine {
   color: #b3b3b3;
   padding: 20rpx;
@@ -15,6 +12,7 @@ page {
   width: 90%;
   margin: 0 auto;
   padding-top: 32rpx;
+  margin-bottom: 20rpx;
 }
 .container .main-container .box .avatar {
   width: 80rpx;
@@ -76,7 +74,6 @@ page {
 }
 .container .footer .send-btn {
   background-color: #fe443a;
-  font-size: 0.8rem;
   font-weight: 500;
   border-radius: 0.5rem;
   width: 18%;

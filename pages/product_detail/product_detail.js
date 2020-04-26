@@ -30,7 +30,7 @@ Page({
   async onLoad(options) {
     console.log(options);
     const id = options.id;
-    this.currentId = id;
+    this.data.currentId = id;
     const btnType = options.type;
     if(btnType === 'buy' || btnType === 'publish') {
       // 已购买的商品不再提供底部footer
@@ -56,9 +56,9 @@ Page({
    */
   onFavor(event) {
     const behavior = event.detail.behavior;
-    console.log(behavior);
+    // console.log(behavior);
     if(behavior === 'favor') {
-      productModel.markCategory(this.currentId)
+      productModel.markCategory(this.data.currentId)
         .then(() => {
           wx.showToast({
             title: '收藏成功！',
@@ -66,7 +66,7 @@ Page({
           });
         })
     } else if(behavior === 'cancel') {
-      productModel.unMarkCategory(this.currentId)
+      productModel.unMarkCategory(this.data.currentId)
         .then(() => {
           wx.showToast({
             title: '您已取消收藏',
@@ -80,9 +80,9 @@ Page({
    *
    * @param {*} event
    */
-  onTapLeft(event) { 
+  async onTapLeft(event) { 
     console.log(this.data.btnType);
-    if(this.data.btnType == 'publish') {
+    if(this.data.btnType === 'publish') {
       this.setData({
         dialogShow: true,
         dialogContent: {
@@ -90,31 +90,51 @@ Page({
           text: '是否确定将该商品的状态改为已卖出？'
         }
       })
+    } else if(this.data.btnType === 'product') {
+      const senderId = wx.getStorageSync('openId');
+      if(!senderId) {
+        wx.showToast({
+          title: '您未登录',
+          icon: 'none',
+          duration: 1500
+        });
+        setTimeout(() => {
+          wx.switchTab({
+            url: '/pages/my/my'
+          });
+        }, 1500);
+        return;
+      }
+      const receiverId = await productModel.buildConnection(this.data.currentId);
+      wx.navigateTo({
+        url: `/pages/chat_room/chat_room?senderId=${senderId}&receiverId=${receiverId}`,
+      });
     }
   },
   /**
-   *下架商品
+   *立即购买
    *
    * @param {*} event
    */
-  // onTapRight(event) {
-  //   console.log(this.data.btnType);
-  //   if(this.data.btnType == 'product') {
-  //     // 立即购买
-  //     wx.navigateTo({
-  //       url: `/pages/pay/pay?id=${this.currentId}`
-  //     });
-  //   } else {
-  //     // 下架商品
-  //     this.setData({
-  //       dialogShow: true,
-  //       dialogContent: {
-  //         type: 1,
-  //         text: '是否确定下架该商品？'
-  //       }
-  //     })
-  //   }
-  // },
+  onTapRight(event) {
+    console.log(this.data.btnType);
+    if(this.data.btnType == 'product') {
+      // 立即购买
+      wx.navigateTo({
+        url: `/pages/pay/pay?id=${this.data.currentId}`
+      });
+    } 
+    // else {
+    //   // 下架商品
+    //   this.setData({
+    //     dialogShow: true,
+    //     dialogContent: {
+    //       type: 1,
+    //       text: '是否确定下架该商品？'
+    //     }
+    //   })
+    // }
+  },
   /**
    *点击弹出框按钮
    *
@@ -167,7 +187,6 @@ Page({
         enFavor: true,
         btnValueRight: '立即购买'
       })
-      // 获取收藏按钮的状态并设置
     }
   }
 })

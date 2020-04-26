@@ -18,16 +18,17 @@ Page({
     images: []
   },
   async onLoad(options) {
-    let height = wx.getSystemInfoSync().windowHeight;
-    this.setData({
-      windowHeight: height
-    });
+    console.log(options);
+    // let height = wx.getSystemInfoSync().windowHeight;
+    // this.setData({
+    //   windowHeight: height
+    // });
     this._toPageBottom();
-    this.data.senderId = options.senderId;
+    this.data.senderId = wx.getStorageSync('openId');;
     this.data.receiverId = options.receiverId;
     // 设置导航栏标题
     wx.setNavigationBarTitle({
-      title: options.title
+      title: options.title || '会话'
     });
     // 获取历史记录
     let histories = await notificationModel.getHistory(this.data.senderId, this.data.receiverId);
@@ -35,6 +36,13 @@ Page({
     console.log("histories:::", histories);
     this.setData({
       msgs: histories
+    })
+    histories.map((item) => {
+      if(item.type === 'image') {
+        this.setData({
+          urls: this.data.images.push(item.value)
+        })
+      }
     })
     // 建立连接
     notificationModel.connectSocket(this.data.senderId);
@@ -59,9 +67,13 @@ Page({
         sender: data.sender,
         receiver: data.receiver 
       });
+      if(data.type === 1) {
+        this.data.urls.push(data.content);
+      }
       console.log("after get:::", this.data.msgs);
       this.setData({
-        msgs: this.data.msgs
+        msgs: this.data.msgs,
+        urls: this.data.urls
       });
       this._toPageBottom();
     })
@@ -77,7 +89,7 @@ Page({
     this.data.page++;
     let tmp = await notificationModel.getHistory(this.data.senderId, this.data.receiverId, this.data.page);
     tmp && tmp.length > 0 ? tmp = this._convertMsgFormat(tmp) : null;
-    this.data.enableLoad = tmp.length === 0 ? true : false;
+    this.data.enableLoad = tmp.length === 0 ? false : true;
     this.data.msgs = tmp.concat(this.data.msgs);
     this.setData({
       msgs: this.data.msgs
@@ -90,7 +102,7 @@ Page({
    */
   onInput(e) {
     // console.log(e);
-    this.data.inputValue = e.detail.value;
+    this.data.inputValue = e.detail.value.trim();
     this.setData({
       sendDisabled: !this.data.inputValue
     })
@@ -167,6 +179,7 @@ Page({
    preview(e) {
     console.log(e);
     const currentUrl = e.currentTarget.dataset.url;
+    console.log(this.data.images);
     wx.previewImage({
       current: currentUrl,
       urls: this.data.images
@@ -204,6 +217,9 @@ Page({
           windowHeight: height,
           scrollTop: rect.height
         })
+        wx.pageScrollTo({
+          scrollTop: rect.bottom
+        });
       }
     }).exec();
   }

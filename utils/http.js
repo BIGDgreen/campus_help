@@ -26,15 +26,16 @@ class HTTP {
             reject();
             // 服务器异常
             const err_code = res.data.data.errorCode;
-            const err_msg = res.data.data.errorMsg;
-            this._show_err(err_code,err_msg);
+            let err_msg = res.data.data.errorMsg;
             if(code === '403' || code === '10002') {
               // 登录失败
+              err_msg = '您未登录';
               wx.clearStorageSync('token');
               wx.switchTab({
                 url: '/pages/my/my'
               })
             }
+            this._show_err(err_code,err_msg);
           }
         },
         // api调用失败

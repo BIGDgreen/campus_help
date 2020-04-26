@@ -90,11 +90,13 @@ Page({
     this._bindFormItem(event, 'price');
   },
   typeInput(event) {
-    const type = this.data.accounts[this.data.accountIndex];
     this.setData({
       accountIndex: event.detail.value,
-      ['formData.type']: type
     });
+    const type = this.data.accounts[this.data.accountIndex];
+    this.setData({
+      ['formData.type']: type
+    })
   },
   descriptionInput(event) {
     // console.log("des:::", event);

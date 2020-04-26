@@ -6,7 +6,8 @@ import ProductModel from '../../models/productModel'
 const productModel = new ProductModel();
 Page({
   data: {
-    backgrounds: ['/images/home/backgrounds/swiper1.jpg', '/images/home/backgrounds/swiper2.jpg'],
+    backgrounds: ['http://39.106.103.198/7ecf70ce4eab48818ee17c19e2a7e490.jpg',
+     'http://39.106.103.198/142d9ac630eb491893b2a1ae5c5918ac.jpg'],
     icons: iconsData,
     hotLists: [],
     page: 1,

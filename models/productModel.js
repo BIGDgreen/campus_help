@@ -126,7 +126,20 @@ class ProductModel extends HTTP {
    */
   payCommdity(id) {
     return this.request({
-      url: `/campus-plat/commodity/${id}/pay`
+      url: `/commodity/${id}/pay`
+    })
+  }
+
+  /**
+   *建立当前用户和物品拥有者用户的联系
+   *
+   * @param {*} id
+   * @returns
+   * @memberof ProductModel
+   */
+  buildConnection(id) {
+    return this.request({
+      url: `/commodity/${id}/communication`
     })
   }
 }

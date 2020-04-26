@@ -23,14 +23,13 @@ Component({
     }
   },
   data: {
-    noResult: false,
   },
   attached() {
-    this._setNavogationTitle();
+    this._setNavigationTitle();
     this._showCategoryList();
   },
   methods: {
-    _setNavogationTitle() {
+    _setNavigationTitle() {
       wx.setNavigationBarTitle({
         title: this.properties.fromTitle
       });
@@ -64,15 +63,9 @@ Component({
         default:
           categoryList = [];
       }
-      if(categoryList.length === 0) {
-        this.setData({
-          noResult: true
-        })
-      } else {
-        this.setData({
-          categoryList
-        })
-      }
+      this.setData({
+        categoryList
+      })
     },
     /**
     *跳转到相关详情页面

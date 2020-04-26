@@ -8,22 +8,9 @@ class NotificationModel extends HTTP {
    * @memberof NotificationModel
    */
   getNotifications() {
-    const notifications = [
-      {
-        avatar: 'http://qz.faisys.com/image/wxImage/default_ablum.jpg',
-        unread: true,
-        name: '张三',
-        latestNote: '在吗'
-      },
-      {
-        avatar: 'http://qz.faisys.com/image/wxImage/default_ablum.jpg',
-        unreadNum: false,
-        name: '李四',
-        latestNote: '吃了吗'
-      },
-    ]
-
-    return notifications;
+    return this.request({
+      url: '/communication/chatList'
+    });
   }
   /**
    *获取消息历史记录，一次十条
@@ -31,29 +18,57 @@ class NotificationModel extends HTTP {
    * @memberof MessageModel
    * @returns {Array}
    */
-  getHistory() {
-    const histories = [
-      {
-        type: 'text',
-        isMe: false,
-        value: 'hello'
-      },
-      {
-        type: 'image',
-        isMe: false,
-        imgSrc: 'http://qz.faisys.com/image/wxImage/default_ablum.jpg'
-      },
-      {
-        type: 'time',
-        dateTime: '3月20日 上午8：00'
-      },
-      {
-        type: 'text',
-        isMe: true,
-        value: '!!!'
+  getHistory(senderId, receiverId, page = 1, size = 10) {
+    return this.request({
+      url: `/communication/${senderId}/chat/${receiverId}/history`,
+      data: {
+        page,
+        size
       }
-    ];
-    return histories;
+    })
+  }
+  /**
+   *建立socket连接
+   *
+   * @memberof NotificationModel
+   */
+  connectSocket(userId) {
+    wx.connectSocket({
+      url: `wss://wx.nightnessss.cn:8011/chat/${userId}`,
+      success: () => {
+        console.log("socket连接已建立！");
+      }
+    })
+  }
+  /**
+   *关闭socket连接
+   *
+   * @memberof NotificationModel
+   */
+  closeSocket() {
+    wx.closeSocket()
+  }
+  /**
+   *发送消息
+   *
+   * @param {String} data
+   * @memberof NotificationModel
+   */
+  sendMessage(sendMsg) {
+    return new Promise((resolve, reject) => {
+      console.log("sendContent:::", sendMsg);
+      wx.sendSocketMessage({
+        data: JSON.stringify(sendMsg),
+        success: () => {
+          console.log("发送成功");
+          resolve();
+        },
+        fail: () => {
+          console.error("发送失败");
+          reject();
+        }
+      })
+    })
   }
 }
 

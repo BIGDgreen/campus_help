@@ -20,7 +20,7 @@
                     <view class="weui-select_in-select-after">{{types[typeIndex]}}</view>
                   </picker>
               </mp-cell>
-              <mp-cell show-error prop="weight" title="货物重量" ext-class="">
+              <mp-cell show-error prop="weight" title="货物重量(kg)" ext-class="">
                   <input bindinput="formInputChange" data-field="weight" class="weui-input" placeholder="货物重量"/>
               </mp-cell>
               <mp-cell show-error prop="sender_address" title="发货地" ext-class="">

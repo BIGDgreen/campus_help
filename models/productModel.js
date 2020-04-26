@@ -84,23 +84,6 @@ class ProductModel extends HTTP {
       needToken: false
     })
   }
-  /**
-   *获取选中商品的支付信息
-   *
-   * @returns
-   * @memberof ProductModel
-   */
-  getCurProduct() {
-    const curProduct = {
-      imageSrc: 'http://qz.faisys.com/image/wxImage/default_ablum.jpg',
-      title: '标题1',
-      price: 100,
-      recipient_name: '张三',
-      recipient_phone: '18154254824',
-      recipient_address: '湖北武汉'
-    };
-    return curProduct;
-  }
 
   /**
    *发布商品
@@ -113,6 +96,17 @@ class ProductModel extends HTTP {
     console.log("postData:::", formData);
     return this.request({
       url: '/commodity/submit',
+      method: 'POST',
+      data: formData
+    })
+  }
+  /**
+   * 发布回收
+   * @param {Object}} formData 
+   */
+  postRecycle(formData) {
+    return this.request({
+      url: '/recycle/submit',
       method: 'POST',
       data: formData
     })

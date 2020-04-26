@@ -9,5 +9,5 @@
       </view>
     </bm-panel>
   </block>
-  <text class="noResult" wx:if="{{noResult}}">暂时没有更多数据~</text>
+  <text class="noResult" wx:if="{{!categoryList || categoryList.length === 0}}">暂时没有更多数据~</text>
 </view>

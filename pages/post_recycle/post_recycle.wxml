@@ -1,10 +1,20 @@
 <!--pages/post_recycle/post_recycle.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
 <view class="container">
   <view class="page__bd">
     <mp-form id="form" rules="{{rules}}" models="{{formData}}">
         <mp-cells>
-          <mp-cell prop="commodity_name" title="名称" ext-class="">
-            <input bindinput="titleInput" data-field="commodity_name" class="weui-input" placeholder="请输入商品名称"/>
+          <mp-cell show-error prop="commodity_name" title="名称" ext-class="">
+            <input bindinput="formInput" data-field="commodity_name" class="weui-input" placeholder="商品名称"/>
+          </mp-cell>
+          <mp-cell show-error prop="price" title="价格(元)" ext-class="">
+            <input bindinput="formInput" data-field="price" class="weui-input" placeholder="要回收的商品价格"/>
+          </mp-cell>
+          <mp-cell show-error prop="weight" title="重量(kg)" ext-class="">
+            <input bindinput="formInput" data-field="weight" class="weui-input" placeholder="商品重量"/>
+          </mp-cell>
+          <mp-cell show-error prop="apartment" title="公寓" ext-class="">
+            <input bindinput="formInput" data-field="apartment" class="weui-input" placeholder="您所在的公寓"/>
           </mp-cell>
           <mp-cell prop="category" title="分类" ext-class="">
             <view class="weui-cell weui-cell_select">
@@ -15,24 +25,34 @@
                 </view>
             </view>  
           </mp-cell>
+          <mp-cell prop="date" title="开始时间" ext-class="">
+            <picker data-field="date" mode="date" value="{{currentDate}}" :start="{{startDate}}" :end="{{endDate}}" bindchange="bindStartDateChange">
+                <view class="weui-input">{{currentStartDate}}</view>
+            </picker>
+          </mp-cell>
+          <mp-cell prop="date" title="结束时间" ext-class="">
+            <picker data-field="date" mode="date" value="{{currentDate}}" :start="{{startDate}}" :end="{{endDate}}" bindchange="bindEndDateChange">
+                <view class="weui-input">{{currentEndDate}}</view>
+            </picker>
+          </mp-cell>
         </mp-cells> 
     </mp-form>
     <view class="weui-cells__title">标签</view>
-      <view class="tag-wrapper">
-        <block wx:for="{{tags}}" wx:key="*this">
-          <bm-tag tagContent="{{item}}" bind:tagTap="onTag" data-index="{{index}}" tag-class="{{tagSelected[index]?'tag_selected':'tag_default'}}">
-            <view slot="after" wx:if="{{tagSelected[index]}}" bind:tap="onCancel" data-index="{{index}}">
-              <image src="/images/publish/cancel.png" class="cancel"/>
-            </view>
-          </bm-tag>
-        </block>
-      </view>
+    <view class="tag-wrapper">
+      <block wx:for="{{tags}}" wx:key="*this">
+        <bm-tag tagContent="{{item}}" bind:tagTap="onTag" data-index="{{index}}" tag-class="{{tagSelected[index]?'tag_selected':'tag_default'}}">
+          <view slot="after" wx:if="{{tagSelected[index]}}" bind:tap="onCancel" data-index="{{index}}">
+            <image src="/images/publish/cancel.png" class="cancel"/>
+          </view>
+        </bm-tag>
+      </block>
+    </view>
     <view class="weui-cells__title">物品描述</view>
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell">
             <view class="weui-cell__bd">
-              <textarea class="weui-textarea" maxlength="-1" bind:confirm="descriptionInput" placeholder="请输入您的物品描述：名称、新旧程度、颜色、品牌等" style="height: 3.3em" />
-              <mp-uploader max-count="5" bindfail="uploadError" bindsuccess="uploadSuccess" select="{{selectFile}}" upload="{{uploadFile}}" files="{{files}}" title="" tips=""></mp-uploader>
+              <textarea class="weui-textarea" maxlength="-1" data-field="content" bindinput="formInput" placeholder="请输入您的物品描述：名称、新旧程度、颜色、品牌等" style="height: 3.3em" />
+              <mp-uploader max-count="3" bindfail="uploadError" bindsuccess="uploadSuccess" select="{{selectFile}}" upload="{{uploadFile}}" files="{{files}}" title="" tips=""></mp-uploader>
             </view>
         </view>
     </view>

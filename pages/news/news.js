@@ -16,13 +16,17 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  async onShow(options) {
     const logined = loginModel.userLogined()
     this.setData({
       logined
     })
     if(logined) {
-      const notifications = notificationModel.getNotifications();
+      const notifications = await notificationModel.getNotifications();
+      notifications.forEach(element => {
+        element.unread = element.lastChat.senderId === element.userId ? false : element.lastChat.hasRead;
+        element.latestNote = element.lastChat.type === 0 ? element.lastChat.content : '[图片]';
+      });
       this.setData({
         notifications
       })
@@ -30,8 +34,12 @@ Page({
   },
 
   toChat(e) {
+    console.log(e);
+    const senderId = e.currentTarget.dataset.senderid;
+    const receiverId = e.currentTarget.dataset.receiverid;
+    const title = e.currentTarget.dataset.title;
     wx.navigateTo({
-      url: '/pages/chat_room/chat_room'
+      url: `/pages/chat_room/chat_room?senderId=${senderId}&receiverId=${receiverId}&title=${title}` 
     });
   }
 })

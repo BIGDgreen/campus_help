@@ -27,7 +27,8 @@ Page({
   getUserinfo(event) {
     // console.log("getUserInfo:::", event.detail.userInfo);
     const userInfo = event.detail.userInfo;
-    loginModel.login((res) => {
+    // 登录
+    loginModel.login(userInfo, (res) => {
       if(res !== 'fail') {
         const logined = loginModel.userLogined();
         if(userInfo && logined) {
@@ -46,31 +47,35 @@ Page({
    * @param {*} event
    */
   inquireMy(event) {
-    const type = event.currentTarget.dataset.type;
-    const mytype = event.currentTarget.dataset.mytype;
+    let type = '';
     let fromTitle = '';
+    const mytype = event.currentTarget.dataset.mytype;
     switch (mytype) {
       case 'collection':
         fromTitle = '我的收藏';
+        type = 'product';
         break;
       case 'recycle':
-        fromTitle = '我的回收'
+        fromTitle = '我的回收';
+        type = 'recycle';
         break;
       case 'sold':
-        fromTitle = '我卖出的'
+        fromTitle = '我卖出的';
+        type = 'sell';
         break;
       case 'bought':
-        fromTitle = '我购买的'
+        fromTitle = '我购买的';
+        type = 'buy'
         break;
       case 'publish':
-        fromTitle = '我发布的'
+        fromTitle = '我发布的';
+        type = 'publish';
         break;
       default:
         console.log("default");
     }
-
     wx.navigateTo({
-      url: `/pages/category_detail/category_detail?type=product&fromTitle=${fromTitle}&title=${mytype}`,
+      url: `/pages/category_detail/category_detail?type=${type}&fromTitle=${fromTitle}&title=${mytype}`,
     });
   },
 

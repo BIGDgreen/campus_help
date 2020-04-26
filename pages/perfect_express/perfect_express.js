@@ -7,23 +7,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showTopTips: false,
-    rules: [{
-          name: 'sender_name',
-          rules: {required: true, message: '收货人姓名是必选项'},
-      }, {
-          name: 'sender_phone',
-          rules: [{required: true, message: '发货人手机号必填'}, {mobile: true, message: '手机号格式不对'}],
-      }, {
-        name: 'weight',
-        rules: [{required: true, message: '货物重量必填'}, {range: [0,100], message: '货物重量为0到100之间的数字'}],
-      },{
-        name: 'recipient_name',
-        rules: {required: true, message: '收货人姓名必填'},
-      },{
-        name: 'recipient_phone',
-        rules: [{required: true, message: '收货人手机号必填'}, {mobile: true, message: '手机号格式不对'}],
-      }],
+      showTopTips: false,
+      rules: [
+        {
+            name: 'sender_name',
+            rules: {required: true, message: '收货人姓名是必选项'},
+        }, {
+            name: 'sender_phone',
+            rules: [{required: true, message: '发货人手机号必填'}, {mobile: true, message: '手机号格式不对'}],
+        }, {
+          name: 'weight',
+          rules: [{required: true, message: '货物重量必填'}, {range: [0,100], message: '货物重量为0到100之间的数字'}],
+        },{
+          name: 'recipient_name',
+          rules: {required: true, message: '收货人姓名必填'},
+        },{
+          name: 'recipient_phone',
+          rules: [{required: true, message: '收货人手机号必填'}, {mobile: true, message: '手机号格式不对'}],
+        }
+      ],
       formData: {},
       deliveryCompanies: ['申通','中通','圆通','邮政','顺丰','韵达','百世','宅急送','德邦','京东','天天'],
       companyIndex: 0,

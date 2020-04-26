@@ -13,9 +13,9 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  async onLoad(options) {
     this.currentId = options.id;
-    const curProduct = productModel.getCurProduct();
+    const curProduct = await productModel.getProductDetail(this.currentId);
     console.log(curProduct)
     this.setData({
       curProduct

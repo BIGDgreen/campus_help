@@ -1,20 +1,22 @@
 <!--pages/chat_room/chat_room.wxml-->
 <!--index.wxml-->
 <view class="container">
-  <view class="main-container">
-    <block wx:for="{{msgs}}">
-      <view class="box {{item.isMe ? 'right-box' : 'left-box'}}" wx:if="{{item.type !== 'time'}}">
-        <image class="avatar" src="{{item.isMe ? userInfo.avatarUrl : othersideAvatar}}"></image>
-        <view class="msg-box" wx:if="{{item.type == 'text'}}">{{item.value}}</view>
-        <image class="image-box" mode="widthFix" wx:if="{{item.type == 'image'}}" src="{{item.imgSrc}}" data-url="{{item.imgSrc}}" bindtap="preview"/>
-      </view>
-      <view class="timeLine" wx:if="{{item.type == 'time'}}">{{item.dateTime}}</view>
-    </block>
-  </view>
+  <scroll-view id="scroll-page" style='height: {{windowHeight - 60}}px' scroll-y="true" scroll-top="{{scrollTop}}" bindscrolltoupper="onTop">
+    <view class="main-container">
+      <block wx:for="{{msgs}}">
+        <view class="box {{item.isMe ? 'right-box' : 'left-box'}}" wx:if="{{item.type !== 'time'}}">
+          <image class="avatar" src="{{item.sender.picture}}"></image>
+          <view class="msg-box" wx:if="{{item.type == 'text'}}">{{item.value}}</view>
+          <image class="image-box" mode="widthFix" wx:if="{{item.type == 'image'}}" src="{{item.value}}" data-url="{{item.value}}" bindtap="preview"/>
+        </view>
+        <view class="timeLine" wx:if="{{item.type == 'time'}}">{{item.dateTime}}</view>
+      </block>
+    </view>
+  </scroll-view>
   <view class="footer">
     <image class="addIcon" bind:tap="sendImg" src="{{active ? '/images/news/add@active.png' : '/images/news/add.png'}}"></image>
     <input class="input-box" bindkeyboardheightchange="onHeightChange" bindinput="onInput" value="{{inputValue}}" cursor-spacing="20" />
-    <button class="send-btn" bind:tap="send">发送</button>
+    <button class="send-btn {{sendDisabled ? 'btnDisabled' : ''}}" bind:tap="send" :disabled="{{sendDisabled}}">发送</button>
   </view>
 </view>
 

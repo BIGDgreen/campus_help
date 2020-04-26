@@ -2,12 +2,3 @@
 .tag {
   margin-right: 14rpx;
 }
-
-.noResult {
-  color: #333333;
-  font-size: .8rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 20rpx;
-}

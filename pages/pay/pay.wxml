@@ -2,11 +2,17 @@
 <view class="container">
   <bm-panel readOnly="{{true}}"
             price="{{curProduct.price}}"
-            title="{{curProduct.title}}"
-            imageSrc="{{curProduct.imageSrc}}" />
-  <mp-cell value="收货人" footer="{{curProduct.recipient_name}}"></mp-cell>
-  <mp-cell value="收货人电话" footer="{{curProduct.recipient_phone}}"></mp-cell>
-  <mp-cell value="收货地址" footer="{{curProduct.recipient_address}}"></mp-cell>
+            title="{{curProduct.commodityName}}"
+            imageSrc="{{curProduct.pics[0]}}" />
+  <mp-cell title="收货人" ext-class="">
+    <input class="weui-input" style="margin-left:20rpx;" placeholder="收货人姓名"/>
+  </mp-cell>
+  <mp-cell title="收货人电话">
+    <input class="weui-input" style="margin-left:20rpx;" placeholder="收货人电话"/>
+  </mp-cell>
+  <mp-cell title="收货地址">
+    <input class="weui-input" style="margin-left:20rpx;" placeholder="收货地址"/>
+  </mp-cell>
   <mp-cell value="备注" footer=""></mp-cell>
   <view class="weui-cells weui-cells_after-title">
     <view class="weui-cell__bd">
@@ -18,12 +24,6 @@
     </view>
   </view>
   <view class="footer">
-    <button type="default"
-            size="default"
-            plain="{{false}}"
-            bind:tap="onTap">
-            下单
-    </button>
+    <button type="default" size="default" plain="{{false}}" bind:tap="onTap">下单</button>
   </view>
-  
 </view>

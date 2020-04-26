@@ -1,13 +1,16 @@
 <!--pages/news/news.wxml-->
 <view class="container" wx:if="{{logined}}">
   <block wx:for="{{notifications}}">
-    <bm-notification avatar="{{item.avatar}}"
+    <bm-notification avatar="{{item.picture}}"
                      unread="{{item.unread}}"
                      name="{{item.name}}"
                      latestNote="{{item.latestNote}}"
+                     data-title="{{item.name}}"
+                     data-senderid="{{item.userId}}"
+                     data-receiverid="{{item.userId === item.lastChat.senderId ? item.lastChat.receiverId : item.lastChat.senderId}}"
                      bind:tap="toChat">
     </bm-notification>
   </block>
+  <text class="noResult" wx:if="{{!notifications || notifications.length === 0}}">暂时没有更多数据~</text>
 </view>
-
 <view wx:else><bm-noLogin></bm-noLogin></view>

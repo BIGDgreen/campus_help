@@ -32,7 +32,7 @@ Page({
     const id = options.id;
     this.currentId = id;
     const btnType = options.type;
-    if(btnType === 'buy') {
+    if(btnType === 'buy' || btnType === 'publish') {
       // 已购买的商品不再提供底部footer
       this.setData({
         showFooter: false
@@ -56,6 +56,7 @@ Page({
    */
   onFavor(event) {
     const behavior = event.detail.behavior;
+    console.log(behavior);
     if(behavior === 'favor') {
       productModel.markCategory(this.currentId)
         .then(() => {
@@ -64,7 +65,7 @@ Page({
             icon: 'none',
           });
         })
-    } else if(behavior === 'favor') {
+    } else if(behavior === 'cancel') {
       productModel.unMarkCategory(this.currentId)
         .then(() => {
           wx.showToast({
@@ -96,45 +97,45 @@ Page({
    *
    * @param {*} event
    */
-  onTapRight(event) {
-    console.log(this.data.btnType);
-    if(this.data.btnType == 'product') {
-      // 立即购买
-      wx.navigateTo({
-        url: `/pages/pay/pay?id=${this.currentId}`
-      });
-    } else {
-      // 下架商品
-      this.setData({
-        dialogShow: true,
-        dialogContent: {
-          type: 1,
-          text: '是否确定下架该商品？'
-        }
-      })
-    }
-  },
+  // onTapRight(event) {
+  //   console.log(this.data.btnType);
+  //   if(this.data.btnType == 'product') {
+  //     // 立即购买
+  //     wx.navigateTo({
+  //       url: `/pages/pay/pay?id=${this.currentId}`
+  //     });
+  //   } else {
+  //     // 下架商品
+  //     this.setData({
+  //       dialogShow: true,
+  //       dialogContent: {
+  //         type: 1,
+  //         text: '是否确定下架该商品？'
+  //       }
+  //     })
+  //   }
+  // },
   /**
    *点击弹出框按钮
    *
    * @param {*} event
    */
-  tapDialogButton(event) {
-    console.log("弹出框:::",event);
-    this.setData({
-        dialogShow: false
-    })
-    if(event.detail.index == 1) {
-      // 点击了确定
-      if(event.currentTarget.dataset.type == 0) {
-        // 已卖出
-        this._decideBtn('sell');
-      } else {
-        // 下架
-        this._decideBtn('takeOff');
-      }
-    }
-  },
+  // tapDialogButton(event) {
+  //   console.log("弹出框:::",event);
+  //   this.setData({
+  //       dialogShow: false
+  //   })
+  //   if(event.detail.index == 1) {
+  //     // 点击了确定
+  //     if(event.currentTarget.dataset.type == 0) {
+  //       // 已卖出
+  //       this._decideBtn('sell');
+  //     } else {
+  //       // 下架
+  //       this._decideBtn('takeOff');
+  //     }
+  //   }
+  // },
   /**
    *更改按钮文字和状态
    *
@@ -143,9 +144,9 @@ Page({
   _decideBtn(value) {
     const btnValue = {
       'product': ['马上咨询', '立即购买'],
-      'publish': ['我已卖出', '我不想卖了'],
+      // 'publish': ['我已卖出', '我不想卖了'],
       'sell': ['已卖出'],
-      'takeOff': ['已下架'],
+      'buy': ['已购买'],
       'recycle': ['已回收']
     }[value];
     this.setData({

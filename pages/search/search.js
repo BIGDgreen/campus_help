@@ -58,7 +58,7 @@ Page({
       const searchRes = await productModel.getSearchRes(inputValue).catch(err => console.error(new Error(err)));
       console.log("searchRes:::", searchRes);
       this.setData({
-        noResult: !searchRes || !searchRes.length,
+        noResult: !searchRes || searchRes.length === 0,
         searched: true,
         inputValue,
         loadingCenter: false,

@@ -32,7 +32,7 @@ Page({
     const id = options.id;
     this.data.currentId = id;
     const btnType = options.type;
-    if(btnType === 'buy' || btnType === 'publish') {
+    if(btnType === 'buy') {
       // 已购买的商品不再提供底部footer
       this.setData({
         showFooter: false
@@ -44,7 +44,7 @@ Page({
       })
     }
     // 显示商品详情
-    const productDetail = await productModel.getProductDetail(id);
+    const productDetail = btnType === 'recycle' ? await productModel.getRecycleDetail(id) : await productModel.getProductDetail(id);
     productDetail.updateTime = filter.formatDate(productDetail.updateTime);
     // console.log(productDetail);
     this.setData({
@@ -83,12 +83,9 @@ Page({
   async onTapLeft(event) { 
     console.log(this.data.btnType);
     if(this.data.btnType === 'publish') {
-      this.setData({
-        dialogShow: true,
-        dialogContent: {
-          type: 0,
-          text: '是否确定将该商品的状态改为已卖出？'
-        }
+      // 完善回收信息
+      wx.navigateTo({
+        url: `/pages/add_recycle/add_recycle?id=${this.data.currentId}`,
       })
     } else if(this.data.btnType === 'product') {
       const senderId = wx.getStorageSync('openId');
@@ -123,7 +120,7 @@ Page({
       wx.navigateTo({
         url: `/pages/pay/pay?id=${this.data.currentId}`
       });
-    } 
+    }
     // else {
     //   // 下架商品
     //   this.setData({
@@ -164,7 +161,7 @@ Page({
   _decideBtn(value) {
     const btnValue = {
       'product': ['马上咨询', '立即购买'],
-      // 'publish': ['我已卖出', '我不想卖了'],
+      'publish': ['加入回收'],
       'sell': ['已卖出'],
       'buy': ['已购买'],
       'recycle': ['已回收']
@@ -186,6 +183,11 @@ Page({
       this.setData({
         enFavor: true,
         btnValueRight: '立即购买'
+      })
+    }
+    if(value == 'publish') {
+      this.setData({
+        showRightBtn: false
       })
     }
   }

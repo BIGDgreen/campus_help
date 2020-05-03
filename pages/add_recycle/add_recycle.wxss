@@ -1,0 +1,2 @@
+/* pages/add_recycle/add_recycle.wxss */
+.container .weui-btn-area{margin:1.2rem auto}.container .weui-btn-area button{background:rgba(222,68,58,0.9);font-weight:500}.container .weui-btn-area button:hover{background:rgba(222,68,58,0.6)}

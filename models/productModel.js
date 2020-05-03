@@ -47,7 +47,17 @@ class ProductModel extends HTTP {
       needToken: false
     })
   }
-
+   /**
+   *获取当前回收商品详情
+   *
+   * @returns
+   * @memberof ProductModel
+   */
+  getRecycleDetail(id) {
+    return this.request({
+      url: `/commodity/recycleDetail/${id}`
+    })
+  }
   /**
    *收藏该商品
    *
@@ -108,11 +118,22 @@ class ProductModel extends HTTP {
   }
   /**
    * 发布回收
-   * @param {Object}} formData 
+   * @param {Object} formData 
    */
   postRecycle(formData) {
     return this.request({
       url: '/recycle/submit',
+      method: 'POST',
+      data: formData
+    })
+  }
+  /**
+   * 将我发布的物品添加到回收
+   * @param {Object} formData 
+   */
+  addRecycle(id, formData) {
+    return this.request({
+      url: `/recycle/${id}/submit`,
       method: 'POST',
       data: formData
     })

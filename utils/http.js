@@ -23,7 +23,6 @@ class HTTP {
           if(code.startsWith('2') && res.data.status === 'success') {
             resolve(res.data.data);
           } else {
-            reject();
             // 服务器异常
             const err_code = res.data.data.errorCode;
             let err_msg = res.data.data.errorMsg;
@@ -36,6 +35,7 @@ class HTTP {
               })
             }
             this._show_err(err_code,err_msg);
+            reject();
           }
         },
         // api调用失败

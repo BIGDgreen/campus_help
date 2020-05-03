@@ -78,7 +78,14 @@ Page({
       url: `/pages/category_detail/category_detail?type=${type}&fromTitle=${fromTitle}&title=${mytype}`,
     });
   },
-
+  /**
+   * 联系客服
+   */
+  contactService() {
+    wx.navigateTo({
+      url: `/pages/chat_room/chat_room?receiverId=admin&title=客服` 
+    });
+  },
    /**
    *若用户已经授权，直接获取用户信息
    *

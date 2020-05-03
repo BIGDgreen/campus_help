@@ -34,8 +34,8 @@
   <view wx:if="{{searched && !noResult}}" class="category-container">
     <bm-category type="product" title="search" categoryList="{{searchRes}}"/>
   </view>
+  <text wx:if="{{searched && noResult}}" class="noResult">没有搜索到相关商品~</text>
   <bm-loading class="loading-center" wx:if="{{loadingCenter}}"/>
   <bm-loading class="loading" wx:if="{{loading}}"/>
-  <text wx:if="{{noResult}}" class="noResult">没有搜索到相关商品~</text>
 </view>
 

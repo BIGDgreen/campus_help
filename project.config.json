@@ -133,6 +133,14 @@
 					"id": -1,
 					"name": "post_recycle",
 					"pathName": "pages/post_recycle/post_recycle",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "recycle_detail",
+					"pathName": "pages/product_detail/product_detail",
+					"query": "type=recycle&id=21",
 					"scene": null
 				}
 			]

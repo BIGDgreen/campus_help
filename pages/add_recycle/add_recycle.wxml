@@ -1,0 +1,30 @@
+<!--pages/add_recycle/add_recycle.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<view class="container">
+  <view class="page__bd">
+    <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+        <mp-cells>
+          <mp-cell show-error prop="weight" title="重量(kg)" ext-class="">
+            <input bindinput="formInput" data-field="weight" class="weui-input" placeholder="商品重量"/>
+          </mp-cell>
+          <mp-cell show-error prop="apartment" title="公寓" ext-class="">
+            <input bindinput="formInput" data-field="apartment" class="weui-input" placeholder="您所在的公寓"/>
+          </mp-cell>
+          <mp-cell prop="date" title="开始时间" ext-class="">
+            <picker data-field="date" mode="date" value="{{currentDate}}" :start="{{startDate}}" :end="{{endDate}}" bindchange="bindStartDateChange">
+                <view class="weui-input">{{currentStartDate}}</view>
+            </picker>
+          </mp-cell>
+          <mp-cell prop="date" title="结束时间" ext-class="">
+            <picker data-field="date" mode="date" value="{{currentDate}}" :start="{{startDate}}" :end="{{endDate}}" bindchange="bindEndDateChange">
+                <view class="weui-input">{{currentEndDate}}</view>
+            </picker>
+          </mp-cell>
+        </mp-cells> 
+    </mp-form>
+    <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" bindtap="submitForm">提交</button>
+    </view>
+  </view>
+</view>
+

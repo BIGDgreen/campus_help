@@ -13,11 +13,23 @@ Page({
           rules: {required: true, message: '物品名称'},
       }, {
           name: 'price',
-          rules: [{required: true, message: '回收价格必填'}, {range: [0,10000], message: '货物重量为0到100之间的数字'}],
+          rules: [{required: true, message: '回收价格必填'}, {
+            validator:function(rule, value, param, models) {
+              let reg=/^\d{1,9}$/;
+              if(!reg.test(value)){
+                return new Error('价格为0到100000000之间的数字')
+              }
+          }, message: '价格为0到100000000之间的数字'}],
       }, {
         name: 'weight',
-        rules: [{required: true, message: '货物重量必填'}, {range: [0,100], message: '货物重量为0到100之间的数字'}],
-      },{
+        rules: [{required: true, message: '货物重量必填'}, {
+          validator:function(rule, value, param, models) {
+            let reg=/^\d{1,4}$/;
+            if(!reg.test(value)){
+              return new Error('货物重量为0到1000之间的数字')
+            }
+        }, message: '货物重量为0到1000之间的数字'}],
+      }, {
         name: 'apartment',
         rules: {required: true, message: '公寓必填'},
       }

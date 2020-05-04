@@ -18,7 +18,13 @@ Page({
           rules: {required: true, message: '商品名称必填'},
       }, {
           name: 'price',
-          rules: [{required: true, message: '价格必填'}, {range: [0,100000000], message: '价格为0到100000000之间的数字'}],
+          rules: [{required: true, message: '价格必填'}, {
+            validator:function(rule, value, param, models) {
+              let reg=/^\d{1,9}$/;
+              if(!reg.test(value)){
+                return new Error('价格为0到100000000之间的数字')
+              }
+          }, message: '价格为0到100000000之间的数字'}],
       }
     ],
     formData: {
@@ -39,14 +45,17 @@ Page({
   onLoad: function (options) {
     const logined = loginModel.userLogined();
     this.setData({
-      logined
-    })
-    this.setData({
+      logined,
       selectFile: this.selectFile.bind(this),
       uploadFile: this.uploadFile.bind(this)
-    })
+    });
+    this.data.numberValidate = function() {
+      let reg=/\d{1,9}/;
+      if(!reg.test(value)){
+        return new Error('价格为0到100000000之间的数字')
+      }
+    }
   },
-
   /**
    *选中标签
    *
